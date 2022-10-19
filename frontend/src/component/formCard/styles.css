@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+* {
+    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Raleway'; */
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to right, rgb(75, 75, 75), rgb(46, 46, 46));
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    color: rgb(248, 248, 248);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%;
+}
+
+fieldset {
+    border: 3px solid dodgerblue
+}
+
+legend {
+    border: 1px solid dodgerblue;
+    padding: 15px 25px;
+    text-align: center;
+    background-color: dodgerblue;
+    border-radius: 8px;
+    margin: 15px 0 25px 0 !important;
+}
+
+div {
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+input {
+    height: 22px;
+    margin-top: 23px;
+}
+
+label {
+    left: 8px;
+}
+
+span {
+    font-weight: bold;
+}
+
+.inputBox {
+    position: relative;
+}
+
+.inputUser {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 100%;
+    letter-spacing: 2px;
+}
+
+.inputUser2 {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 30%;
+    letter-spacing: 2px;
+}
+
+.labelInput {
+    position: absolute;
+    top: 0px;
+    pointer-events: none;
+    transition: .5px;
+}
+
+.inputUser:focus~.labelInput,
+.inputUser2:focus~.labelInput,
+.inputUser2:valid~.labelInput .inputUser:valid~.labelInput {
+    top: -20px;
+    font-size: 12px;
+    color: dodgerblue;
+}
+
+.title {
+    margin: 15px auto;
+}
+
+.radio {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_div {
+    display: grid;
+}
+
+
+#data_nascimento {
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+input[type="submit" i] {
+    background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
+    width: 100%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 20% !important;
+    align-items: center;
+    margin: -16px 0 5px 0;
+}
+
+input[type="submit" i]:hover {
+    background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
+}
+
+#identidade {
+    border: none;
+    padding: 2px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+#CPF {
+    border: none;
+    padding: 2px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+#residencia {
+    border: none;
+    padding: 2px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+#nascimento {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+input[type="radio" i] {
+    margin-top: 17px !important;
+}
+
+input[type="date" i] {
+    display: inherit;
+}
+
+input[type="file" i] {
+    padding: 8px;
+    display: none;
+    background-image: url("add.png");
+    color: white;
+}
+
+.inputFile {
+    cursor: pointer;
+    padding: 15px;
+    border: 2px solid rgb(201, 193, 193);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.labelArquivos {
+    cursor: pointer;
+    width: 100% !important;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    color: #33d4ce;
+    text-align: center;
+}
+
+.imageInput {
+    padding: 5px;
+    width: 50px;
+    margin: auto;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
