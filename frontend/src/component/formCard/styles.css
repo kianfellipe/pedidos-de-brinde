@@ -5,6 +5,12 @@
     /* font-family: 'Raleway'; */
 }
 
+.inputDados{
+    background-color: rgb(58, 58, 58);
+    border-radius: 5px;
+    border: 3px solid rgb(129, 0, 0);
+    margin-bottom: 38px;
+}
 
 body {
     display: flex;
@@ -23,8 +29,10 @@ body {
     width: 100%;
 }
 
-fieldset {
-    border: 3px solid dodgerblue
+
+
+.inputRadioBox {
+  
 }
 
 legend {
@@ -62,6 +70,7 @@ span {
     background: none;
     border: none;
     border-bottom: 1px solid white;
+    border-right: 1px solid white;
     outline: none;
     color: white;
     font-size: 15px;
@@ -73,6 +82,7 @@ span {
     background: none;
     border: none;
     border-bottom: 1px solid white;
+    border-right: 1px solid white;
     outline: none;
     color: white;
     font-size: 15px;
@@ -103,6 +113,7 @@ span {
     flex-direction: row;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0px;
 }
 
 .input_div {

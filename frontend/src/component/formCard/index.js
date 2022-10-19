@@ -6,69 +6,70 @@ import axios from 'axios'
 class Rca extends Component {
 
     state = {
-        rows: [{
+        itens: [{
             nome: '',
-            preco: ''
+            quantidade: ''
         }],
-        solicitante: '',
+        nomeSolicitante: '',
+        cargo: '',
         email: '',
-        tel: '',
-        cpf: '',
-        cnpj: '',
-        sex: '',
-        bDate: '',
-        cep: '',
-        endereco: '',
-        num: '',
-        bairro: '',
-        cidade: '',
-        estado: '',
+        codigo: '',
+        clienteNovo: '',
+        clientCodigo: '',
+        razaoSocial: '',
+        solicitar: ''
+
     }
 
 
     handleChange = idx => e => {
         const { value } = e.target;
-        const rows = [...this.state.rows];
-        rows[idx] = {
-           ...rows[idx],
+        const itens = [...this.state.itens];
+        itens[idx] = {
+            ...itens[idx],
             nome: value
         };
         this.setState({
-            rows
+            itens
         });
     };
 
-    
-    handleChangePreco = idx => e => {
+    onchange = e => {
+        this.setState({ value: e.target.value });
+
+    }
+
+
+    handleChangequantidade = idx => e => {
         const { value } = e.target;
-        const rows = [...this.state.rows];
-        rows[idx] = {
-           ...rows[idx],
-            preco: value
+        const itens = [...this.state.itens];
+        itens[idx] = {
+            ...itens[idx],
+            quantidade: value
         };
         this.setState({
-            rows
+            itens
         });
     };
 
     handleAddRow = () => {
         const item = {
             nome: '',
-            preco: ''
+            quantidade: ''
         };
         this.setState({
-            rows: [...this.state.rows, item]
+            itens: [...this.state.itens, item]
         });
     };
     handleRemoveRow = () => {
         this.setState({
-            rows: this.state.rows.slice(0, -1)
+            itens: this.state.itens.slice(0, -1)
         });
     };
     handleRemoveSpecificRow = (idx) => () => {
-        const rows = [...this.state.rows]
-        rows.splice(idx, 1)
-        this.setState({ rows })
+        const itens = [...this.state.itens]
+        itens.splice(idx, 1)
+        this.setState({ itens })
     }
 
     onSubmit(e) {
@@ -76,20 +77,13 @@ class Rca extends Component {
 
 
         let solicitacao = new Blob([JSON.stringify({
-            solicitante: this.state.solicitante,
+            nomeSolicitante: this.state.nomeSolicitante,
             email: this.state.email,
-            tel: this.state.tel,
-            cpf: this.state.cpf,
-            cnpj: this.state.cnpj,
-            sex: this.state.sex,
-            bDate: this.state.bDate,
-            cep: this.state.cep,
-            num: this.state.num,
-            bairro: this.state.bairro,
-            endereco: this.state.endereco,
-            cidade: this.state.cidade,
-            estado: this.state.estado,
-            rows: this.state.rows
+            codigo: this.state.codigo,
+            cargo: this.state.cargo,
+            clienteNovo: this.state.clienteNovo,
+            razaoSocial: this.state.razaoSocial,
+            solicitar: this.state.solicitar
 
         })], {
             type: 'application/json'
@@ -109,130 +103,198 @@ class Rca extends Component {
     }
 
     render() {
+        const { cargo } = this.state;
         return (
-
             <div className="box">
+                <legend className="title">Solicitação de Brinde e MPDV</legend>
 
-                <fieldset>
-                    <legend className="title">Solicitação de Brinde e MPDV</legend>
-                        <h3>Dados do solicitante</h3>
-                    <div className="inputBox">
-                        <input type="text"
-                            name="solicitante"
-                            className="inputUser"
-                            autoComplete="off"
-                            value={this.state.solicitante}
-                            onChange={e => this.setState({ solicitante: e.target.value })} />
-                        <label htmlFor="nome" className="labelInput">Nome do solicitante</label>
-                    </div>
-                
-                    <div className="inputBox">
-                        <div className="radio" value={this.state.sex}
-                            onChange={e => this.setState({ sex: e.target.value })}>
-                                <label htmlFor="nome" className="labelInput">Você é:</label>
-                            <div className="input_div">
-                                <label htmlFor="feminino">Gerente</label>
-                                <input type="radio" id="feminino" name="genero" value="feminino"
-                                />
-                            </div>
+                {/*////////////////////Aqui começa a solicitação de dados do solicitante /////////////*/}
 
-                            <div className="input_div">
-                                <label htmlFor="masculino">Representante</label>
-                                <input type="radio" id="masculino" name="genero" value="masculino" />
-                            </div>
+                <div className='inputDados'>
+                    <b>Dados do solicitante</b>
+                    <br></br>
+                    <p>Aqui você deve informar os seus dados para identificação e contato.</p>
+                </div>
 
-                            <div className="input_div">
-                                <label htmlFor="outros">Cliente interno</label>
-                                <input type="radio" id="outros" name="genero" value="outros" />
-                            </div>
+                <div className="inputBox">
+                    <label htmlFor="nomeSolicitante" className="labelInput">Nome do solicitante</label>
+                    <input type="text"
+                        name="nomeSolicitante"
+                        className="inputUser"
+                        autoComplete="off"
+                        value={this.state.nomeSolicitante}
+                        onChange={e => this.setState({ nomeSolicitante: e.target.value })} />
+                </div>
+
+                <div className="inputRadioBox">
+                    <div className="radio" value={this.state.cargo}
+                        onChange={e => this.setState({ cargo: e.target.value })}>
+                        <label htmlFor="nome" className="labelInput">Você é:</label>
+                        <div className="input_div">
+                            <label htmlFor="gerente">Gerente</label>
+                            <input type="radio" id="gerente" name="area" value="gerente" onChange={this.onchange}
+                            />
+                        </div>
+
+                        <div className="input_div">
+                            <label htmlFor="Representante">Representante</label>
+                            <input type="radio" id="Representante" name="area" value="representante" onChange={this.onchange} />
+                        </div>
+
+                        <div className="input_div">
+                            <label htmlFor="outros">Cliente interno</label>
+                            <input type="radio" id="outros" name="area" value="interno" onChange={this.onchange} />
                         </div>
                     </div>
+                </div>
 
+
+                {cargo === 'representante' && (
                     <div className="inputBox">
                         <input type="text"
-                            name="email"
-                            className="inputUser"
+                            name="codigo"
+                            className="inputUser2"
                             autoComplete="off"
-                            value={this.state.email}
-                            onChange={e => this.setState({ email: e.target.value })} />
-                        <label htmlFor="email" className="labelInput">E-mail</label>
+                            value={this.state.codigo}
+                            onChange={e => this.setState({ codigo: e.target.value })} />
+                        <label htmlFor="codigo" className="labelInput">Código</label>
                     </div>
+                )}
+
+                {cargo === 'gerente' && (
+                    <div className="inputBox">
+                        <input type="text"
+                            name="codigo"
+                            className="inputUser2"
+                            autoComplete="off"
+                            value={this.state.codigo}
+                            onChange={e => this.setState({ codigo: e.target.value })} />
+                        <label htmlFor="codigo" className="labelInput">Código</label>
+                    </div>
+                )}
+
+                <div className="inputBox">
+                    <input type="text"
+                        name="email"
+                        className="inputUser"
+                        autoComplete="off"
+                        value={this.state.email}
+                        onChange={e => this.setState({ email: e.target.value })} />
+                    <label htmlFor="email" className="labelInput">E-mail</label>
+                </div>
 
 
-                    <div className="row-container">
-                        <h3>Produtos</h3>
-                        <div className="table-container">
-                            <div className="row clearfix">
-                                <div className="col-md-12 column">
-                                    <table
-                                        className="table table-bordered table-hover"
-                                        id="tab_logic"
-                                    >
-                                        <thead>
-                                            <tr>
+                {/*//////////Aqui termina a solicitação de dados do solicitante///////////////////// */}
 
-                                                <th className="text-center"> Nome </th>
-                                                <th className="text-center"> Preço </th>
 
-                                                <th className="text-center"> Total </th>
+                {/*//////////Aqui começa a solicitação de dados do cliente //////////////////////////*/}
+                <div className='inputDados'>
+                    <b>Dados do cliente</b>
+                    <br></br>
+                    <p>Aqui você deve informar os dados do cliente para que vai receber os itens solicitados.</p>
+                </div>
+
+                <div className="inputBox">
+                    <div className="radio" value={this.state.cargo}
+                        onChange={e => this.setState({ cargo: e.target.value })}>
+                        <label htmlFor="nome" className="labelInpu">Cliente novo?</label>
+                        <div className="input_div">
+                            <label htmlFor="gerente">Sim</label>
+                            <input type="radio" id="gerente" name="clienteNovo" value="Sim" />
+                        </div>
+
+                        <div className="input_div">
+                            <label htmlFor="Representante">Não</label>
+                            <input type="radio" id="Representante" name="clienteNovo" value="Não" />
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div className="inputBox">
+                    <label htmlFor="nomeSolicitante" className="labelInput">Nome do solicitante</label>
+                    <input type="text"
+                        name="nomeSolicitante"
+                        className="inputUser"
+                        autoComplete="off"
+                        value={this.state.nomeSolicitante}
+                        onChange={e => this.setState({ nomeSolicitante: e.target.value })} />
+                </div>
+
+
+
+                <div className="row-container">
+                    <h3>Produtos</h3>
+                    <div className="table-container">
+                        <div className="row clearfix">
+                            <div className="col-md-12 column">
+                                <table
+                                    className="table table-bordered table-hover"
+                                    id="tab_logic"
+                                >
+                                    <thead>
+                                        <tr>
+
+                                            <th className="text-center"> Item </th>
+                                            <th className="text-center"> Quantidade </th>
+
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {this.state.itens.map((item, idx) => (
+                                            <tr id="addr0" key={idx}>
+
+                                                <td className="col-3">
+                                                    <input
+                                                        type="text"
+                                                        name="nome"
+                                                        value={this.state.itens[idx].nome}
+                                                        onChange={this.handleChange(idx)}
+                                                        className="form-control"
+                                                    />
+                                                </td>
+                                                <td className="col-2">
+                                                    <input
+                                                        type="text"
+                                                        name="quantidade"
+                                                        value={this.state.itens[idx].quantidade}
+                                                        onChange={this.handleChangequantidade(idx)}
+                                                        className="form-control"
+                                                    />
+                                                </td>
+
+                                                <td>
+                                                    <button
+                                                        className="btn btn-outline-danger btn-sm"
+                                                        onClick={this.handleRemoveRow}
+                                                    >
+                                                        Remove
+                                                    </button>
+                                                </td>
                                             </tr>
-                                        </thead>
+                                        ))}
+                                    </tbody>
+                                </table>
 
-                                        <tbody>
-                                            {this.state.rows.map((item, idx) => (
-                                                <tr id="addr0" key={idx}>
+                                <button onClick={this.handleAddRow} className="btn btn-primary">
+                                    Adicionar
+                                </button>
+                                <button
+                                    onClick={this.handleRemoveRow}
+                                    className="btn btn-danger float-right"
+                                >
+                                    Deletar Último
+                                </button>
 
-                                                    <td className="col-4">
-                                                        <input
-                                                            type="text"
-                                                            name="nome"
-                                                            value={this.state.rows[idx].nome}
-                                                            onChange={this.handleChange(idx)}
-                                                            className="form-control"
-                                                        />
-                                                    </td>
-                                                    <td className="col-2">
-                                                        <input
-                                                            type="text"
-                                                            name="preco"
-                                                            value={this.state.rows[idx].preco}
-                                                            onChange={this.handleChangePreco(idx)}
-                                                            className="form-control"
-                                                        />
-                                                    </td>
-
-                                                    <td className="col-2">
-                                                        <input type="text" readOnly className="form-control" id="staticEmail" value="total" />
-                                                    </td>
-                                                    <td>
-                                                        <button
-                                                            className="btn btn-outline-danger btn-sm"
-                                                            onClick={this.handleRemoveRow}
-                                                        >
-                                                            Remove
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-
-                                    <button onClick={this.handleAddRow} className="btn btn-primary">
-                                        Adicionar
-                                    </button>
-                                    <button
-                                        onClick={this.handleRemoveRow}
-                                        className="btn btn-danger float-right"
-                                    >
-                                        Deletar Último
-                                    </button>
-
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <input type="submit" onClick={(e) => this.onSubmit(e)} />
-                </fieldset>
+                </div>
+                <input type="submit" onClick={(e) => this.onSubmit(e)} />
+
 
             </div>
 
