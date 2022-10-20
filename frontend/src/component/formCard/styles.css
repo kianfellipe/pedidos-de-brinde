@@ -79,6 +79,10 @@ label {
     left: 8px;
 }
 
+option {
+    background-color: black;
+}
+
 span {
     font-weight: bold;
 }
@@ -114,16 +118,9 @@ span {
 .inputTable {
     background: none;
     border: none;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    outline: none;
-    color: white;
     font-size: 15px;
     width: 80%;
     letter-spacing: 2px;
-}
-
-.inputTable2 {
     background: none;
     border: none;
     border-bottom: 1px solid white;
@@ -131,8 +128,32 @@ span {
     outline: none;
     color: white;
     font-size: 15px;
+    width: 100%;
+    letter-spacing: 2px;
+    height: 28px;
+    width: auto;
+    margin-right: 40px;
+    margin-top: 24px;
+   
+}
+
+.inputTable2 {
+    background: none;
+    border: none;
+    font-size: 15px;
     width: 30%;
     letter-spacing: 2px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 100%;
+    letter-spacing: 2px;
+    height: 25px;
+    width: 50px;
 }
 
 
@@ -176,8 +197,31 @@ span {
     font-size: 15px;
 }
 
+.btnAdicionar{
+    margin-top: 15px;
+    background-color: rgb(1, 146, 13);
+    width: auto;
+    height: 38px;
+    border-radius: 5px;
+    margin-right: 30px;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+}
+
+.btnDeletarUltimo{
+    background-color: rgb(146, 1, 1);
+    width: auto;
+    height: 38px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+}
+
+
 input[type="submit" i] {
-    background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
+    background-image: linear-gradient(to right, rgb(0, 102, 235), rgb(47, 0, 255));
     width: 100%;
     border: none;
     padding: 15px;
