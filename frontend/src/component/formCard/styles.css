@@ -5,11 +5,19 @@
     /* font-family: 'Raleway'; */
 }
 
-.inputDados{
+.inputDados {
     background-color: rgb(58, 58, 58);
     border-radius: 5px;
     border: 3px solid rgb(129, 0, 0);
     margin-bottom: 38px;
+}
+
+.inputDados2 {
+    background-color: rgb(58, 58, 58);
+    border-radius: 5px;
+    border: 3px solid rgb(129, 0, 0);
+    margin-bottom: 38px;
+    margin-top: 35px;
 }
 
 body {
@@ -29,10 +37,23 @@ body {
     width: 100%;
 }
 
-
-
 .inputRadioBox {
-  
+    margin-right: 25px;
+    background-color: rgb(54, 54, 54);
+    margin-left: 18px;
+    border-radius: 5px;
+    margin-bottom: 55px;
+    margin-top: 25px;
+}
+
+.inputRadioBox2 {
+    margin-right: 155px;
+    background-color: rgb(54, 54, 54);
+    margin-left: 18px;
+    border-radius: 5px;
+    margin-bottom: 55px;
+    margin-top: 25px;
+
 }
 
 legend {
@@ -90,6 +111,31 @@ span {
     letter-spacing: 2px;
 }
 
+.inputTable {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 80%;
+    letter-spacing: 2px;
+}
+
+.inputTable2 {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 30%;
+    letter-spacing: 2px;
+}
+
+
 .labelInput {
     position: absolute;
     top: 0px;
@@ -114,6 +160,7 @@ span {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0px;
+    margin-right: 25px;
 }
 
 .input_div {
