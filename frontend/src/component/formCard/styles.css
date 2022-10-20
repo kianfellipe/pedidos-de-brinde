@@ -37,6 +37,11 @@ body {
     width: 100%;
 }
 
+.descricaoBox{
+    height: 150px;
+    width: 500px;
+}
+
 .inputRadioBox {
     margin-right: 25px;
     background-color: rgb(54, 54, 54);
