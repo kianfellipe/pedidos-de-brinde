@@ -1,2 +1,7 @@
-
+:root {
+    background: rgb(209, 209, 209);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
 
