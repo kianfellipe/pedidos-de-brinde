@@ -7,104 +7,171 @@
 
 
 body {
-    
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, rgb(75, 75, 75), rgb(46, 46, 46));
     border-radius: 15px;
 }
 
 
-.box {
-    flex-direction: column;
-    color: rgb(248, 248, 248);
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 15px;
-}
 
-.inputDados {
-    background: rgba(44, 44, 44, 0.315);
-    border-radius: 5px;
-    border: 3px solid rgb(129, 0, 0);
-    margin-bottom: 38px;
-    padding: 10px;
-    padding-bottom: 5px;
-}
 
-.inputDados b {
-    margin-left: 8px;
-    letter-spacing: 2px;
-    margin-bottom: 228px;
-}
 
-.inputDados p {
-    margin-left: 8px;
-}
-
-.inputDados2 {
-    background-color: rgb(58, 58, 58);
-    border-radius: 5px;
-    border: 3px solid rgb(129, 0, 0);
-    margin-bottom: 38px;
-    padding: 10px;
-    padding-bottom: 5px;
-    margin-top: 45px;
-}
 
 
 
 
 .descricaoBox {
     height: 150px;
-    
+
 }
 
 
-@media(min-width: 576px) {
-    .inputRadioBox {
-        margin-right: 25px;
-        margin-left: 25px;
-        background-color: rgb(54, 54, 54);
-        border-radius: 5px;
-        margin-bottom: 55px;
-        margin-top: 55px;
-        display: flex;
-        padding: 15px;
-        
-    }
-}
 
 @media(max-width: 425px) {
+
+    .box {
+        flex-direction: column;
+        color: rgb(248, 248, 248);
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 12px;
+        border-radius: 15px;
+    }
+
+    .inputDados {
+        background: rgba(44, 44, 44, 0.315);
+        border-radius: 5px;
+        border: 3px solid rgb(129, 0, 0);
+        margin-bottom: 38px;
+        padding: 3px;
+        font-size: 13px;
+
+    }
+
+    .inputDados b {
+        margin-left: 8px;
+        letter-spacing: 2px;
+        margin-bottom: 228px;
+    }
+
+    .inputDados p {
+        margin-left: 8px;
+    }
+
+    .inputDados2 {
+        background: rgba(44, 44, 44, 0.315);
+        border-radius: 5px;
+        border: 3px solid rgb(129, 0, 0);
+        margin-bottom: 38px;
+        padding: 10px;
+        padding-bottom: 5px;
+        margin-top: 45px;
+        font-size: 13px;
+    }
+
     .inputRadioBox {
-        background-color: rgb(59, 59, 59);
+        background-color: rgba(129, 0, 0, 0.692);
         margin-right: 15px;
         margin-left: 15px;
         border-radius: 5px;
-        margin-bottom: 55px;
-        margin-top: 25px;
+        margin-bottom: 45px;
+        margin-top: 35px;
         display: flex;
         padding: 15px;
-       
+
     }
 
+    .inputRadioBox2 {
+        margin-right: 25px;
+        background-color: rgba(129, 0, 0, 0.692);
+        margin-left: 18px;
+        border-radius: 5px;
+        margin-bottom: 55px;
+        display: flex;
+        padding: 15px;
+    
+    
+    }
+
+    .inputUser {
+        display: flex;
+        background: rgba(255, 255, 255, 0.541);
+        border: none;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        outline: none;
+        color: rgb(0, 0, 0);
+        font-size: 15px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        margin-top: 8px;
+        height: 28px;
+    }
+
+    .inputUser2 {
+        display: flex;
+        background: rgba(255, 255, 255, 0.541);
+        border: none;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        outline: none;
+        color: white;
+        font-size: 8px;
+        width: 30%;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        margin-top: 8px;
+        height: 28px;
+    }
+
+    .inputTable {
+        background: rgba(255, 255, 255, 0.541);
+        letter-spacing: 2px;
+        border: none;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        border-radius: 3px;
+        outline: none;
+        color: white;
+        font-size: 15px;
+        width: 80%;
+        height: 28px;
+        margin-right: 40px;
+        margin-top: 24px;
+    
+    }
+    
+    .inputTable2 {
+        background: rgba(255, 255, 255, 0.541);
+        border: none;
+        width: 20%;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        border-radius: 3px;
+        outline: none;
+        color: white;
+        font-size: 15px;
+        letter-spacing: 2px;
+        height: 25px;
+    }
+
+    .text-center{
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+
 }
 
-
-.inputRadioBox2 {
-    margin-right: 25px;
-    background-color: rgb(54, 54, 54);
-    margin-left: 18px;
-    border-radius: 5px;
-    margin-bottom: 55px;
-    margin-top: 55px;
-    display: flex;
-    padding: 15px;
+@media(min-width: 425px) {}
+   
 
 
-}
 
-.input_div{
-    font-size: 18px;
+.input_div {
+    font-size: 15px;
     display: table-row;
     align-items: center;
     justify-content: center;
@@ -112,13 +179,13 @@ body {
 }
 
 
-.input_div input{
-   margin-top: none;
-   cursor: pointer;
-   margin-right: 8px;
+.input_div input {
+    margin-top: none;
+    cursor: pointer;
+    margin-right: 8px;
 }
 
-.input_div label{
+.input_div label {
     cursor: pointer;
 }
 
@@ -152,81 +219,7 @@ span {
     margin-left: 10px;
 }
 
-.inputUser {
-    display: flex;
-    background: rgba(44, 44, 44, 0.315);
-    border: none;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    outline: none;
-    color: white;
-    font-size: 15px; 
-    width: auto;
-    letter-spacing: 2px;
-    border-radius: 3px;
-    margin-top: 8px;
-    height: 28px;
-}
 
-
-
-.inputUser2 {
-    display: flex;
-    background: rgba(44, 44, 44, 0.315);
-    border: none;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    outline: none;
-    color: white;
-    font-size: 15px;
-    width: 30%;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    border-radius: 3px;
-    margin-top: 8px;
-    height: 28px;
-}
-
-.inputTable {
-    background: none;
-    border: none;
-    font-size: 15px;
-    width: 80%;
-    letter-spacing: 2px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    outline: none;
-    color: white;
-    font-size: 15px;
-    width: 100%;
-    letter-spacing: 2px;
-    height: 28px;
-    width: auto;
-    margin-right: 40px;
-    margin-top: 24px;
-
-}
-
-.inputTable2 {
-    background: none;
-    border: none;
-    font-size: 15px;
-    width: 30%;
-    letter-spacing: 2px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    outline: none;
-    color: white;
-    font-size: 15px;
-    width: 100%;
-    letter-spacing: 2px;
-    height: 25px;
-    width: 50px;
-}
 
 
 
@@ -281,6 +274,3 @@ input[type="submit" i]:hover {
 input[type="radio" i] {
     margin-top: 17px !important;
 }
-
-
-

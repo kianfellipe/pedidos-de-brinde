@@ -215,23 +215,23 @@ class Rca extends Component {
                         </div>
 
                         <div className="inputBox">
+                            <label htmlFor="nomeSolicitante" className="labelInput">*Código do Cliente</label>
                             <input type="text"
                                 name="nomeSolicitante"
                                 className="inputUser2"
                                 autoComplete="off"
                                 value={this.state.clientCodigo}
                                 onChange={e => this.setState({ clientCodigo: e.target.value })} />
-                            <label htmlFor="nomeSolicitante" className="labelInput">*Código do Cliente</label>
                         </div>
 
                         <div className="inputBox">
+                            <label htmlFor="nomeSolicitante" className="labelInput">*Razão Social</label>
                             <input type="text"
                                 name="nomeSolicitante"
                                 className="inputUser"
                                 autoComplete="off"
                                 value={this.state.razaoSocial}
                                 onChange={e => this.setState({ razaoSocial: e.target.value })} />
-                            <label htmlFor="nomeSolicitante" className="labelInput">*Razão Social</label>
                         </div>
 
                         {/*//////////Aqui termina a solicitação de dados do cliente///////////////////// */}
@@ -243,19 +243,18 @@ class Rca extends Component {
                                 onChange={e => this.setState({ solicitar: e.target.value })}>
                                 <label>*Solicitar:</label>
                                 <div className="input_div">
+                                    <input type="radio" id="brinde" name="area" value="brinde" onChange={this.onchange} />
                                     <label htmlFor="brinde">Brinde</label>
-                                    <input type="radio" id="brinde" name="area" value="brinde" onChange={this.onchange}
-                                    />
                                 </div>
 
                                 <div className="input_div">
-                                    <label htmlFor="mpdv">MPDV</label>
                                     <input type="radio" id="mpdv" name="area" value="mpdv" onChange={this.onchange} />
+                                    <label htmlFor="mpdv">MPDV</label>
                                 </div>
 
                                 <div className="input_div">
-                                    <label htmlFor="personalizado">Personalizados</label>
                                     <input type="radio" id="personalizado" name="area" value="personalizado" onChange={this.onchange} />
+                                    <label htmlFor="personalizado">Personalizados</label>
                                 </div>
                             </div>
                         </div>
@@ -395,11 +394,13 @@ class Rca extends Component {
                                                     </td>
 
                                                     <td>
-                                                        <button
+                                                     {/*   <button
                                                             className="btn btn-outline-danger btn-sm"
                                                             onClick={this.handleRemoveRow} >
                                                             Remove
                                                         </button>
+
+                                            */}
                                                     </td>
                                                 </tr>
                                             ))}
