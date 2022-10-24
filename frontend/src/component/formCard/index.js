@@ -324,7 +324,7 @@ class Rca extends Component {
                                 </table>
 
                                 <button className="btnAdicionar" onClick={this.handleAddRow} >
-                                    Adicionar
+                                    Adicionar mais itens
                                 </button>
 
                             </div>
