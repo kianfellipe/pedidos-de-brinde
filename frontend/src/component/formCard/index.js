@@ -426,15 +426,15 @@ class Rca extends Component {
                                     name="personalizado"
                                     value={this.state.personalizado}
                                     onChange={e => this.setState({ personalizado: e.target.value })}
-                                    className="inputTable">
+                                    className="inputTable3">
                                     <option></option>
                                     <option>Espaço Rayco</option>
                                     <option>Espaço Kian</option>
                                     <option>Outros</option>
                                 </select>
                             </div>
+                            <div className='descricaoContainer'>
                             <label>*Descreva seu pedido:</label>
-                            <div>
                                 <textarea className='descricaoBox' />
                             </div>
                         </div>

@@ -66,30 +66,30 @@ body {
 
     .inputUser {
         display: flex;
-        background: rgba(255, 255, 255, 0.541);
+        background: rgba(255, 255, 255, 0.800);
         border: none;
         border-bottom: 1px solid white;
         border-right: 1px solid white;
         outline: none;
         color: rgb(0, 0, 0);
         font-size: 15px;
-        width: 200px;
-        font-weight: 700;
+        width: 100%;
+        margin-right: 10px;
         letter-spacing: 2px;
         border-radius: 3px;
         margin-top: 8px;
-        height: 28px;
+        height: 28px; 
     }
 
     .inputUser2 {
         display: flex;
-        background: rgba(255, 255, 255, 0.541);
+        background: rgba(255, 255, 255, 0.800);
         border: none;
         border-bottom: 1px solid white;
         border-right: 1px solid white;
         outline: none;
-        color: white;
-        font-size: 8px;
+        color: rgb(0, 0, 0);
+        font-size: 15px;
         width: 30%;
         letter-spacing: 2px;
         margin-bottom: 20px;
@@ -99,47 +99,51 @@ body {
     }
 
     .inputTable {
-        background: rgba(255, 255, 255, 0.541);
+        background: rgba(255, 255, 255, 0.800);
         letter-spacing: 2px;
         border: none;
         border-bottom: 1px solid white;
         border-right: 1px solid white;
         border-radius: 3px;
         outline: none;
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 15px;
-        width: 160px;
+        max-width: 160px;
         height: 28px;
         margin-right: 10px;
         margin-bottom: 10px;
+        font-weight: 700;
     }
 
     .inputTable2 {
-        background: rgba(255, 255, 255, 0.541);
+        background: rgba(255, 255, 255, 0.800);
         border: none;
         width: 40px;
         border-bottom: 1px solid white;
         border-right: 1px solid white;
         border-radius: 3px;
         outline: none;
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 15px;
         letter-spacing: 2px;
         height: 25px;
         float: right;
         margin-right: 10px;
         margin-bottom: 10px;
+        font-weight: 700;
     }
 
-    .tdRemoveBtn{
-        margin-bottom: 10px;
-        background-color: transparent;
+    .tdRemoveBtn {
+        width: fit-content;
+        height: fit-content;
+        background: none;
+        border: none;
     }
 
     .tdRemoveBtn img {
-        width: 20px;
-        height: 20px;
-        background-color: transparent;
+        display: block;
+        width: 28px;
+        margin-bottom: 10px;
     }
 
     .text-center {
@@ -147,7 +151,48 @@ body {
         font-weight: 500;
         text-align: left;
     }
-    
+
+    .descricaoContainer{
+        margin-top: 25px;
+        margin-right: 40px;
+    }
+
+    .inputTable3{
+        background: rgba(255, 255, 255, 0.8);
+        letter-spacing: 2px;
+        border: none;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        border-radius: 3px;
+        outline: none;
+        color: rgb(0, 0, 0);
+        font-size: 15px;
+        max-width: 160px;
+        height: 28px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .descricaoBox{
+        display: flex;
+        background: rgba(255, 255, 255, 0.800);
+        border: none;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        outline: none;
+        color: rgb(0, 0, 0);
+        font-size: 15px;
+        width: 100%;
+        font-weight: 700;
+        margin-right: 10px;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        margin-top: 8px;
+        height: 100px;
+        margin-bottom: 50px;
+    }
+
 
 }
 
@@ -188,13 +233,14 @@ label {
 }
 
 option {
-    background-color: black;
-
+    background-color: rgba(255, 255, 255, 0.800);
+    font-weight: 700;
 }
 
 .inputBox {
     position: relative;
     margin-left: 10px;
+    margin-right: 40px;
 }
 
 
