@@ -14,12 +14,6 @@ body {
 
 
 
-
-
-
-
-
-
 .descricaoBox {
     height: 150px;
 
@@ -38,26 +32,6 @@ body {
     }
 
     .inputDados {
-        background: rgba(44, 44, 44, 0.315);
-        border-radius: 5px;
-        border: 3px solid rgb(129, 0, 0);
-        margin-bottom: 38px;
-        padding: 3px;
-        font-size: 13px;
-
-    }
-
-    .inputDados b {
-        margin-left: 8px;
-        letter-spacing: 2px;
-        margin-bottom: 228px;
-    }
-
-    .inputDados p {
-        margin-left: 8px;
-    }
-
-    .inputDados2 {
         background: rgba(44, 44, 44, 0.315);
         border-radius: 5px;
         border: 3px solid rgb(129, 0, 0);
@@ -88,8 +62,6 @@ body {
         margin-bottom: 55px;
         display: flex;
         padding: 15px;
-    
-    
     }
 
     .inputUser {
@@ -136,17 +108,16 @@ body {
         outline: none;
         color: white;
         font-size: 15px;
-        width: 80%;
+        width: 160px;
         height: 28px;
-        margin-right: 40px;
-        margin-top: 24px;
-    
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
-    
+
     .inputTable2 {
         background: rgba(255, 255, 255, 0.541);
         border: none;
-        width: 20%;
+        width: 40px;
         border-bottom: 1px solid white;
         border-right: 1px solid white;
         border-radius: 3px;
@@ -155,18 +126,32 @@ body {
         font-size: 15px;
         letter-spacing: 2px;
         height: 25px;
+        float: right;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 
-    .text-center{
-        font-size: 18px;
+    .tdRemoveBtn{
+        margin-bottom: 10px;
+        background-color: transparent;
+    }
+
+    .tdRemoveBtn img {
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+    }
+
+    .text-center {
+        font-size: 16px;
         font-weight: 500;
+        text-align: left;
     }
-
+    
 
 }
 
 @media(min-width: 425px) {}
-   
 
 
 
@@ -198,9 +183,6 @@ legend {
     margin: 15px 0 25px 0 !important;
 }
 
-
-
-
 label {
     left: 8px;
 }
@@ -210,17 +192,10 @@ option {
 
 }
 
-span {
-    font-weight: bold;
-}
-
 .inputBox {
     position: relative;
     margin-left: 10px;
 }
-
-
-
 
 
 .title {
@@ -230,6 +205,7 @@ span {
 
 .btnAdicionar {
     margin-top: 15px;
+    margin-bottom: 50px;
     background-color: rgb(1, 146, 13);
     width: auto;
     height: 38px;
@@ -240,15 +216,6 @@ span {
     color: white;
 }
 
-.btnDeletarUltimo {
-    background-color: rgb(146, 1, 1);
-    width: auto;
-    height: 38px;
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 20px;
-    color: white;
-}
 
 
 input[type="submit" i] {
