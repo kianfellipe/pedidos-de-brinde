@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './styles.css'
 import axios from 'axios'
 import removeIcon from './red-x-icon.svg'
+import InputMask from 'react-input-mask'
 
 
 class Rca extends Component {
@@ -134,6 +135,7 @@ class Rca extends Component {
                         <label htmlFor="nomeSolicitante" className="labelInput">*Nome do solicitante</label>
                         <input type="text"
                             name="nomeSolicitante"
+                            maxLength={40}
                             className="inputUser"
                             autoComplete="off"
                             value={this.state.nomeSolicitante}
@@ -166,6 +168,7 @@ class Rca extends Component {
                             <label htmlFor="codigo" className="labelInput">*Código</label>
                             <input type="text"
                                 name="codigo"
+                                maxLength={4}
                                 className="inputUser2"
                                 autoComplete="off"
                                 value={this.state.codigo}
@@ -176,8 +179,9 @@ class Rca extends Component {
                     {cargo === 'gerente' && (
                         <div className="inputBox">
                             <label htmlFor="codigo" className="labelInput">*Código</label>
-                            <input type="text"
+                            <input type="integer"
                                 name="codigo"
+                                maxLength={2}
                                 className="inputUser2"
                                 autoComplete="off"
                                 value={this.state.codigo}
@@ -211,12 +215,12 @@ class Rca extends Component {
                             onChange={e => this.setState({ clienteNovo: e.target.value })}>
                             <label htmlFor="nome" className="labelInpu">*Cliente novo?</label>
                             <div className="input_div">
-                                <input type="radio" id="gerente" name="clienteNovo" value="Sim" />
-                                <label htmlFor="gerente">Sim</label>
+                                <input type="radio" id="sim" name="clienteNovo" value="Sim" />
+                                <label htmlFor="sim">Sim</label>
                             </div>
                             <div className="input_div">
-                                <input type="radio" id="Representante" name="clienteNovo" value="Não" />
-                                <label htmlFor="Representante">Não</label>
+                                <input type="radio" id="nao" name="clienteNovo" value="Nao" />
+                                <label htmlFor="nao">Não</label>
                             </div>
                         </div>
                     </div>
@@ -227,13 +231,14 @@ class Rca extends Component {
                             name="nomeSolicitante"
                             className="inputUser2"
                             autoComplete="off"
+                            maxLength={5}
                             value={this.state.clientCodigo}
                             onChange={e => this.setState({ clientCodigo: e.target.value })} />
                     </div>
 
                     <div className="inputBox">
                         <label htmlFor="cnpj" className="labelInput">*CNPJ</label>
-                        <input type="text"
+                        <InputMask mask='99.999.999/9999-99' type="text"
                             name="cnpj"
                             className="inputUser"
                             autoComplete="off"
@@ -319,7 +324,7 @@ class Rca extends Component {
                                                 </td>
                                                 <td>
                                                     <input
-                                                        type="text"
+                                                        type='number'
                                                         name="quantidade"
                                                         value={this.state.rows[idx].quantidade}
                                                         onChange={this.handleChangequantidade(idx)}
@@ -400,7 +405,7 @@ class Rca extends Component {
                                                 </td>
                                                 <td>
                                                     <input
-                                                        type="text"
+                                                        type="number"
                                                         name="quantidade"
                                                         value={this.state.rows[idx].quantidade}
                                                         onChange={this.handleChangequantidade(idx)}
@@ -471,11 +476,11 @@ class Rca extends Component {
                         onChange={e => this.setState({ obsBoolean: e.target.value })}>
                             <label className="labelInpu">*Deseja fazer alguma observação?</label>
                             <div className="input_div">
-                                <input type="radio" id="obsBoolean" name="obsBoolean" value="obsSim" onChange={this.onchange}/>
+                                <input type="radio" id="ObsSim" name="obsBoolean" value="obsSim" onChange={this.onchange}/>
                                 <label htmlFor="ObsSim">Sim</label>
                             </div>
                             <div className="input_div">
-                                <input type="radio" id="obsBoolean" name="obsBoolean" value="obsNao" onChange={this.onchange}/>
+                                <input type="radio" id="obsNao" name="obsBoolean" value="obsNao" onChange={this.onchange}/>
                                 <label htmlFor="obsNao">Não</label>
                             </div>
                         </div>
