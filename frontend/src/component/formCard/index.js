@@ -14,11 +14,13 @@ class Rca extends Component {
         codigo: '',
         clienteNovo: '',
         clientCodigo: '',
+        cnpj: '',
         razaoSocial: '',
         solicitar: '',
         personalizado: '',
-        descricao: ''
-
+        descricao: '',
+        obsBoolean:'',
+        obs: ''
     }
 
 
@@ -83,11 +85,13 @@ class Rca extends Component {
             cargo: this.state.cargo,
             clienteNovo: this.state.clienteNovo,
             clientCodigo: this.state.clientCodigo,
+            cnpj: this.state.cnpj,
             razaoSocial: this.state.razaoSocial,
             solicitar: this.state.solicitar,
             rows: this.state.rows,
-            personalizado: this.state.personalizado
-
+            personalizado: this.state.personalizado,
+            descricao: this.state.descricao,
+            obs: this.state.obs
         })], {
             type: 'application/json'
         })
@@ -108,6 +112,8 @@ class Rca extends Component {
     render() {
         const { cargo } = this.state;
         const { solicitar } = this.state;
+        const { obsBoolean } = this.state
+
 
         return (
 
@@ -223,6 +229,16 @@ class Rca extends Component {
                             autoComplete="off"
                             value={this.state.clientCodigo}
                             onChange={e => this.setState({ clientCodigo: e.target.value })} />
+                    </div>
+
+                    <div className="inputBox">
+                        <label htmlFor="cnpj" className="labelInput">*CNPJ</label>
+                        <input type="text"
+                            name="cnpj"
+                            className="inputUser"
+                            autoComplete="off"
+                            value={this.state.cnpj}
+                            onChange={e => this.setState({ cnpj: e.target.value })} />
                     </div>
 
                     <div className="inputBox">
@@ -392,7 +408,7 @@ class Rca extends Component {
                                                 </td>
 
                                                 <td>
-                                                <button
+                                                    <button
                                                         className="tdRemoveBtn"
                                                         onClick={this.handleRemoveSpecificRow(idx)}>
                                                         <img src={removeIcon} alt="Remover" />
@@ -406,7 +422,7 @@ class Rca extends Component {
                                 </table>
 
                                 <button onClick={this.handleAddRow} className="btnAdicionar">
-                                    Adicionar
+                                    Adicionar mais itens
                                 </button>
 
                             </div>
@@ -418,7 +434,7 @@ class Rca extends Component {
                     {/*//////////Aqui começa o CAMPO de dados do PERSONALIZADO///////////////////// */}
 
                     {solicitar === 'personalizado' && (
-                        <div>
+                        <div className='descricaoContainer'>
                             <div>
                                 <label>*Selecione: </label>
                                 <select
@@ -433,12 +449,56 @@ class Rca extends Component {
                                     <option>Outros</option>
                                 </select>
                             </div>
-                            <div className='descricaoContainer'>
-                            <label>*Descreva seu pedido:</label>
-                                <textarea className='descricaoBox' />
+                            <div className='descricaoLabel'>
+                                <label>*Descreva seu pedido:</label>
+                                <textarea className='descricaoBox'
+                                    type='text'
+                                    name="descricao"
+                                    autoComplete="off"
+                                    value={this.state.descricao}
+                                    onChange={e => this.setState({ descricao: e.target.value })} />
                             </div>
                         </div>
                     )}
+
+                    {/*//////////Aqui termina o CAMPO de dados do PERSONALIZADO///////////////////// */}
+
+                    {/*//////////Aqui começa o CAMPO de OBSERVAÇÃO///////////////////// */}
+
+                    <div className="inputRadioBox2">
+                        <div className="radio" 
+                        value={this.state.obsBoolean}
+                        onChange={e => this.setState({ obsBoolean: e.target.value })}>
+                            <label className="labelInpu">*Deseja fazer alguma observação?</label>
+                            <div className="input_div">
+                                <input type="radio" id="obsBoolean" name="obsBoolean" value="obsSim" onChange={this.onchange}/>
+                                <label htmlFor="ObsSim">Sim</label>
+                            </div>
+                            <div className="input_div">
+                                <input type="radio" id="obsBoolean" name="obsBoolean" value="obsNao" onChange={this.onchange}/>
+                                <label htmlFor="obsNao">Não</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {obsBoolean === 'obsSim' && (
+
+                        <div className='descricaoContainer'>
+
+                            <div className='descricaoLabel'>
+                                <label>Observação:</label>
+                                <textarea className='descricaoBox'
+                                    type='text'
+                                    name="obs"
+                                    autoComplete="off"
+                                    value={this.state.obs}
+                                    onChange={e => this.setState({ obs: e.target.value })} />
+                            </div>
+                        </div>
+                    )}
+
+
+                    {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
                     <input type="submit" onClick={(e) => this.onSubmit(e)} />
 

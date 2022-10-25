@@ -1,12 +1,18 @@
 import './App.css';
 import Rca from './component/formCard';
 import React from 'react'
+import Header from './component/header';
 
 function App() {
   return (
-    <div className="App">
-      <Rca/>
-    </div>
+    <>
+      <Header />
+      <main>
+        <div className="App">
+          <Rca />
+        </div>
+      </main>
+    </>
   );
 }
 
