@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Lob;
 
+import com.kian.brind.entities.Solicitacao;
+
 public class SolicitacaoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -13,6 +15,11 @@ public class SolicitacaoDTO implements Serializable {
 	private String jsonPedido;
 
 	public SolicitacaoDTO() {
+	}
+	
+	public SolicitacaoDTO(Solicitacao entity) {
+		id = entity.getId();
+		jsonPedido = entity.getJsonPedido();
 	}
 
 	public SolicitacaoDTO(String jsonPedido) {

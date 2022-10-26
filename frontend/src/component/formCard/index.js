@@ -25,7 +25,7 @@ class Rca extends Component {
     }
 
 
-    handleChange = idx => e => {
+    handleChangeNome = idx => e => {
         const { value } = e.target;
         const rows = [...this.state.rows];
         rows[idx] = {
@@ -37,12 +37,12 @@ class Rca extends Component {
         });
     };
 
-    onchange = e => {
-        this.setState({ value: e.target.value });
 
+    handleChange = e =>{
+        this.setState({ value: e.target.value });
     }
 
-    handleChangequantidade = idx => e => {
+    handleChangeQuantidade = idx => e => {
         const { value } = e.target;
         const rows = [...this.state.rows];
         rows[idx] = {
@@ -310,7 +310,7 @@ class Rca extends Component {
                                                         type="text"
                                                         name="nome"
                                                         value={this.state.rows[idx].nome}
-                                                        onChange={this.handleChange(idx)}
+                                                        onChange={this.handleChangeNome(idx)}
                                                         className="inputTable">
                                                         <option></option>
                                                         <option>Chaveiro Abridor | Rayco</option>
@@ -327,7 +327,7 @@ class Rca extends Component {
                                                         type='number'
                                                         name="quantidade"
                                                         value={this.state.rows[idx].quantidade}
-                                                        onChange={this.handleChangequantidade(idx)}
+                                                        onChange={this.handleChangeQuantidade(idx)}
                                                         className="inputTable2" />
                                                 </td>
 
@@ -380,7 +380,7 @@ class Rca extends Component {
                                                         type="text"
                                                         name="nome"
                                                         value={this.state.rows[idx].nome}
-                                                        onChange={this.handleChange(idx)}
+                                                        onChange={this.handleChangeNome(idx)}
                                                         className="inputTable">
                                                         <option></option>
                                                         <option>8904 – EXPOSITOR MANGUEIRA LUM C/6 SUP KIAN</option>
@@ -408,7 +408,7 @@ class Rca extends Component {
                                                         type="number"
                                                         name="quantidade"
                                                         value={this.state.rows[idx].quantidade}
-                                                        onChange={this.handleChangequantidade(idx)}
+                                                        onChange={this.handleChangeQuantidade(idx)}
                                                         className="inputTable2" />
                                                 </td>
 
