@@ -4,6 +4,8 @@ import axios from 'axios'
 import removeIcon from './red-x-icon.svg'
 import InputMask from 'react-input-mask'
 
+import { validEmail } from '../../utils/regex'
+
 
 class Rca extends Component {
 
@@ -20,9 +22,12 @@ class Rca extends Component {
         solicitar: '',
         personalizado: '',
         descricao: '',
-        obsBoolean:'',
-        obs: ''
+        obsBoolean: '',
+        obs: '',
+        emailError:'',
     }
+
+
 
 
     handleChangeNome = idx => e => {
@@ -38,7 +43,7 @@ class Rca extends Component {
     };
 
 
-    handleChange = e =>{
+    handleChange = e => {
         this.setState({ value: e.target.value });
     }
 
@@ -74,6 +79,17 @@ class Rca extends Component {
         rows.splice(idx, 1)
         this.setState({ rows })
     }
+
+  
+    validateEmail = () => {
+        const email = this.state.email
+        if (validEmail.test(email)) {
+            this.setState({emailError:  ""})
+        } else {
+            this.setState({emailError:   "email invalido"})
+        }
+    }
+
 
     onSubmit(e) {
         console.log(this.state, 'THE STATE --------- $$$$')
@@ -114,7 +130,7 @@ class Rca extends Component {
         const { cargo } = this.state;
         const { solicitar } = this.state;
         const { obsBoolean } = this.state
-
+       
 
         return (
 
@@ -195,8 +211,12 @@ class Rca extends Component {
                             name="email"
                             className="inputUser"
                             autoComplete="off"
-                            value={this.state.email}
-                            onChange={e => this.setState({ email: e.target.value })} />
+                            onChange={e => this.setState({ email: e.target.value })}
+                            onBlur={this.validateEmail}/>
+                        <span style={{
+                            fontWeight: 'bold',
+                            color: 'red',
+                        }}> {this.state.emailError}</span>
                     </div>
 
 
@@ -471,16 +491,16 @@ class Rca extends Component {
                     {/*//////////Aqui começa o CAMPO de OBSERVAÇÃO///////////////////// */}
 
                     <div className="inputRadioBox2">
-                        <div className="radio" 
-                        value={this.state.obsBoolean}
-                        onChange={e => this.setState({ obsBoolean: e.target.value })}>
+                        <div className="radio"
+                            value={this.state.obsBoolean}
+                            onChange={e => this.setState({ obsBoolean: e.target.value })}>
                             <label className="labelInpu">*Deseja fazer alguma observação?</label>
                             <div className="input_div">
-                                <input type="radio" id="ObsSim" name="obsBoolean" value="obsSim" onChange={this.onchange}/>
+                                <input type="radio" id="ObsSim" name="obsBoolean" value="obsSim" onChange={this.onchange} />
                                 <label htmlFor="ObsSim">Sim</label>
                             </div>
                             <div className="input_div">
-                                <input type="radio" id="obsNao" name="obsBoolean" value="obsNao" onChange={this.onchange}/>
+                                <input type="radio" id="obsNao" name="obsBoolean" value="obsNao" onChange={this.onchange} />
                                 <label htmlFor="obsNao">Não</label>
                             </div>
                         </div>
