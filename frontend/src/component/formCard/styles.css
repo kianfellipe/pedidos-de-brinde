@@ -270,7 +270,11 @@ input[type="submit" i]:hover {
     background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
 }
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 input[type="radio" i] {
     margin-top: 17px !important;

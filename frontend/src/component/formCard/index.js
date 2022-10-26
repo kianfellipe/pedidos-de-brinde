@@ -4,7 +4,7 @@ import axios from 'axios'
 import removeIcon from './red-x-icon.svg'
 import InputMask from 'react-input-mask'
 
-import { validEmail } from '../../utils/regex'
+import { validEmail, validName } from '../../utils/regex'
 
 
 class Rca extends Component {
@@ -24,9 +24,30 @@ class Rca extends Component {
         descricao: '',
         obsBoolean: '',
         obs: '',
-        emailError:'',
+        emailError: '',
+        nameError: ''
     }
 
+
+    validateEmail = () => {
+        const email = this.state.email
+        if (validEmail.test(email)) {
+            this.setState({ emailError: "" })
+        } else {
+            this.setState({ emailError: "email invalido" })
+        }
+    }
+
+    validateName = () => {
+        const nomeSolicitante = this.state.nomeSolicitante
+        if (validName.test(nomeSolicitante)) {
+            this.setState({ nameError: "" })
+        } else {
+            this.setState({ nameError: "nome invalido" })
+        }
+    }
+
+    validateNumber
 
 
 
@@ -80,15 +101,7 @@ class Rca extends Component {
         this.setState({ rows })
     }
 
-  
-    validateEmail = () => {
-        const email = this.state.email
-        if (validEmail.test(email)) {
-            this.setState({emailError:  ""})
-        } else {
-            this.setState({emailError:   "email invalido"})
-        }
-    }
+
 
 
     onSubmit(e) {
@@ -130,7 +143,7 @@ class Rca extends Component {
         const { cargo } = this.state;
         const { solicitar } = this.state;
         const { obsBoolean } = this.state
-       
+
 
         return (
 
@@ -151,11 +164,13 @@ class Rca extends Component {
                         <label htmlFor="nomeSolicitante" className="labelInput">*Nome do solicitante</label>
                         <input type="text"
                             name="nomeSolicitante"
-                            maxLength={40}
                             className="inputUser"
                             autoComplete="off"
-                            value={this.state.nomeSolicitante}
-                            onChange={e => this.setState({ nomeSolicitante: e.target.value })} />
+                            onChange={e => this.setState({ nomeSolicitante: e.target.value })}
+                            onBlur={this.validateName} />
+                        <span style={{
+                            color: 'red',
+                        }}> {this.state.nameError}</span>
                     </div>
 
                     <div className="inputRadioBox">
@@ -212,9 +227,8 @@ class Rca extends Component {
                             className="inputUser"
                             autoComplete="off"
                             onChange={e => this.setState({ email: e.target.value })}
-                            onBlur={this.validateEmail}/>
+                            onBlur={this.validateEmail} />
                         <span style={{
-                            fontWeight: 'bold',
                             color: 'red',
                         }}> {this.state.emailError}</span>
                     </div>
