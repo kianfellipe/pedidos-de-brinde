@@ -101,7 +101,30 @@ class Rca extends Component {
         console.log(this.state, 'THE STATE --------- $$$$')
         alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
 
-
+     let solicitacao = new Blob([JSON.stringify({
+            nomeSolicitante: this.state.nomeSolicitante,
+            email: this.state.email,
+            codigo: this.state.codigo,
+            cargo: this.state.cargo,
+            clienteNovo: this.state.clienteNovo,
+            clientCodigo: this.state.clientCodigo,
+            cnpj: this.state.cnpj,
+            razaoSocial: this.state.razaoSocial,
+            solicitar: this.state.solicitar,
+            rows: this.state.rows,
+            personalizado: this.state.personalizado,
+            descricao: this.state.descricao,
+            obs: this.state.obs
+        })], {
+            type: 'application/json'
+        })
+        let formData = new FormData()
+        formData.append('solicitacao', solicitacao)
+        axios({
+            url: "https://pedido-brinde-kian.herokuapp.com/pedido",
+            method: "POST",
+            data: formData
+        })
     }
 
     render() {
