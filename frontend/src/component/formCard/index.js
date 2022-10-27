@@ -28,7 +28,6 @@ class Rca extends Component {
         nameError: ''
     }
 
-
     validateEmail = () => {
         const email = this.state.email
         if (validEmail.test(email)) {
@@ -46,10 +45,6 @@ class Rca extends Component {
             this.setState({ nameError: "Nome inválido" })
         }
     }
-
-    validateNumber
-
-
 
     handleChangeNome = idx => e => {
         const { value } = e.target;
@@ -102,40 +97,10 @@ class Rca extends Component {
     }
 
 
-
-
     handleSubmit(e) {
         console.log(this.state, 'THE STATE --------- $$$$')
         alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
 
-        let solicitacao = new Blob([JSON.stringify({
-            nomeSolicitante: this.state.nomeSolicitante,
-            email: this.state.email,
-            codigo: this.state.codigo,
-            cargo: this.state.cargo,
-            clienteNovo: this.state.clienteNovo,
-            clientCodigo: this.state.clientCodigo,
-            cnpj: this.state.cnpj,
-            razaoSocial: this.state.razaoSocial,
-            solicitar: this.state.solicitar,
-            rows: this.state.rows,
-            personalizado: this.state.personalizado,
-            descricao: this.state.descricao,
-            obs: this.state.obs
-        })], {
-            type: 'application/json'
-        })
-
-        let formData = new FormData()
-
-
-        formData.append('solicitacao', solicitacao)
-
-        axios({
-            url: "http://localhost:8080/pedido",
-            method: "POST",
-            data: formData
-        })
 
     }
 
@@ -151,7 +116,7 @@ class Rca extends Component {
 
                 <div className="box">
                     <legend className="title">Solicitação de Brinde e MPDV</legend>
-                    <form >
+                    <form onSubmit={(e) => this.handleSubmit(e)} >
                         {/*////////////////////Aqui começa a solicitação de dados do solicitante /////////////*/}
 
                         <div className='inputDados'>
@@ -214,6 +179,7 @@ class Rca extends Component {
                                     name="codigo"
                                     maxLength={2}
                                     className="inputUser2"
+                            
                                     autoComplete="off"
                                     value={this.state.codigo}
                                     onChange={e => this.setState({ codigo: e.target.value })} />
@@ -539,7 +505,7 @@ class Rca extends Component {
 
                         {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                    <input type="submit" onClick={(e) => this.handleSubmit(e)}/>
+                        <input type="submit" value='Enviar Solicitação' />
 
                     </form>
                 </div>
