@@ -4,19 +4,21 @@ import java.io.Serializable;
 
 import javax.persistence.Lob;
 
+import org.hibernate.annotations.Type;
+
 import com.kian.brind.entities.Solicitacao;
 
 public class SolicitacaoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
 	private Long id;
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	private String jsonPedido;
 
 	public SolicitacaoDTO() {
 	}
-	
+
 	public SolicitacaoDTO(Solicitacao entity) {
 		id = entity.getId();
 		jsonPedido = entity.getJsonPedido();

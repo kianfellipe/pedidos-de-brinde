@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name = "tb_solicitacao")
 public class Solicitacao implements Serializable {
@@ -18,6 +20,7 @@ public class Solicitacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	private String jsonPedido;
 
 	public Solicitacao() {
