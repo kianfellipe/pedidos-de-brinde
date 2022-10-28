@@ -97,11 +97,11 @@ class Rca extends Component {
     }
 
 
-    handleSubmit(e) {
+    handleSubmit = async () => {
         console.log(this.state, 'THE STATE --------- $$$$')
         alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
 
-     let solicitacao = new Blob([JSON.stringify({
+        let solicitacao = new Blob([JSON.stringify({
             nomeSolicitante: this.state.nomeSolicitante,
             email: this.state.email,
             codigo: this.state.codigo,
@@ -118,13 +118,24 @@ class Rca extends Component {
         })], {
             type: 'application/json'
         })
+
         let formData = new FormData()
         formData.append('solicitacao', solicitacao)
-        axios({
-            url: "https://pedido-brinde-kian.herokuapp.com/pedido",
-            method: "POST",
-            data: formData
+
+        await axios({
+            method: "post",
+            url: "http://localhost:8080/pedido",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
         })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
+
+
     }
 
     render() {
@@ -152,31 +163,35 @@ class Rca extends Component {
                             <label htmlFor="nomeSolicitante" className="labelInput">*Nome do solicitante</label>
                             <input type="text"
                                 name="nomeSolicitante"
+                                required
+                                maxLength={40}
                                 className="inputUser"
                                 autoComplete="off"
-                                onChange={e => this.setState({ nomeSolicitante: e.target.value })}
-                                onBlur={this.validateName} />
+                                onBlur={this.validateName}
+                                onChange={e => this.setState({ nomeSolicitante: e.target.value })} />
                             <span style={{
                                 color: 'red',
                             }}> {this.state.nameError}</span>
                         </div>
 
                         <div className="inputRadioBox">
-                            <div value={this.state.cargo}
-                                onChange={e => this.setState({ cargo: e.target.value })}>
+                            <div onChange={e => this.setState({ cargo: e.target.value })}>
                                 <label>*Você é:</label>
                                 <div className="input_div">
-                                    <input type="radio" id="Gerente" name="area" value="gerente" onChange={this.onchange} />
-                                    <label htmlFor='Gerente' >Gerente</label>
+                                    <input type="radio" id="gerente" name="area" value="gerente"
+                                        onChange={this.onchange} required />
+                                    <label htmlFor='gerente' >Gerente</label>
                                 </div>
 
                                 <div className="input_div">
-                                    <input type="radio" id="Representante" name="area" value="representante" onChange={this.onchange} />
-                                    <label htmlFor="Representante">Representante</label>
+                                    <input type="radio" id="representante" name="area" value="representante"
+                                        onChange={this.onchange} required />
+                                    <label htmlFor="representante">Representante</label>
                                 </div>
 
                                 <div className="input_div">
-                                    <input type="radio" id="outros" name="area" value="interno" onChange={this.onchange}></input>
+                                    <input type="radio" id="outros" name="area" value="interno"
+                                        onChange={this.onchange} required />
                                     <label htmlFor="outros">Cliente interno</label>
                                 </div>
                             </div>
@@ -185,12 +200,14 @@ class Rca extends Component {
                         {cargo === 'representante' && (
                             <div className="inputBox">
                                 <label htmlFor="codigo" className="labelInput">*Código</label>
-                                <input type="number"
+                                <input
+                                    type="number"
                                     name="codigo"
-                                    maxLength={4}
+                                    required
                                     className="inputUser2"
                                     autoComplete="off"
                                     value={this.state.codigo}
+                                    onWheel={event => event.currentTarget.blur()}
                                     onChange={e => this.setState({ codigo: e.target.value })} />
                             </div>
                         )}
@@ -198,13 +215,14 @@ class Rca extends Component {
                         {cargo === 'gerente' && (
                             <div className="inputBox">
                                 <label htmlFor="codigo" className="labelInput">*Código</label>
-                                <input type="number"
+                                <input
+                                    type="number"
                                     name="codigo"
-                                    maxLength={2}
+                                    required
                                     className="inputUser2"
-                            
                                     autoComplete="off"
                                     value={this.state.codigo}
+                                    onWheel={event => event.currentTarget.blur()}
                                     onChange={e => this.setState({ codigo: e.target.value })} />
                             </div>
                         )}
@@ -213,6 +231,7 @@ class Rca extends Component {
                             <label htmlFor="email" className="labelInput">*E-mail</label>
                             <input type="text"
                                 name="email"
+                                required
                                 className="inputUser"
                                 autoComplete="off"
                                 onChange={e => this.setState({ email: e.target.value })}
@@ -238,11 +257,11 @@ class Rca extends Component {
                                 onChange={e => this.setState({ clienteNovo: e.target.value })}>
                                 <label htmlFor="nome" className="labelInpu">*Cliente novo?</label>
                                 <div className="input_div">
-                                    <input type="radio" id="sim" name="clienteNovo" value="Sim" />
+                                    <input type="radio" id="sim" name="clienteNovo" value="Sim" required />
                                     <label htmlFor="sim">Sim</label>
                                 </div>
                                 <div className="input_div">
-                                    <input type="radio" id="nao" name="clienteNovo" value="Nao" />
+                                    <input type="radio" id="nao" name="clienteNovo" value="Nao" required />
                                     <label htmlFor="nao">Não</label>
                                 </div>
                             </div>
@@ -251,6 +270,8 @@ class Rca extends Component {
                         <div className="inputBox">
                             <label htmlFor="clientCodigo" className="labelInput">*Código do Cliente</label>
                             <input type="number"
+                                required
+                                onWheel={event => event.currentTarget.blur()}
                                 name="clientCodigo"
                                 className="inputUser2"
                                 autoComplete="off"
@@ -261,7 +282,9 @@ class Rca extends Component {
 
                         <div className="inputBox">
                             <label htmlFor="cnpj" className="labelInput">*CNPJ</label>
-                            <InputMask mask='99.999.999/9999-99' type="text"
+                            <InputMask mask='99.999.999/9999-99'
+                                type="text"
+                                required
                                 name="cnpj"
                                 className="inputUser"
                                 autoComplete="off"
@@ -270,9 +293,10 @@ class Rca extends Component {
                         </div>
 
                         <div className="inputBox">
-                            <label htmlFor="nomeSolicitante" className="labelInput">*Razão Social</label>
+                            <label htmlFor="razaoSocial" className="labelInput">*Razão Social</label>
                             <input type="text"
-                                name="nomeSolicitante"
+                                name="razaoSocial"
+                                required
                                 className="inputUser"
                                 autoComplete="off"
                                 value={this.state.razaoSocial}
@@ -288,17 +312,20 @@ class Rca extends Component {
                                 onChange={e => this.setState({ solicitar: e.target.value })}>
                                 <label>*Solicitar:</label>
                                 <div className="input_div">
-                                    <input type="radio" id="brinde" name="area" value="brinde" onChange={this.onchange} />
+                                    <input type="radio" id="brinde" name="area" value="brinde"
+                                        onChange={this.onchange} required />
                                     <label htmlFor="brinde">Brinde</label>
                                 </div>
 
                                 <div className="input_div">
-                                    <input type="radio" id="mpdv" name="area" value="mpdv" onChange={this.onchange} />
+                                    <input type="radio" id="mpdv" name="area" value="mpdv"
+                                        onChange={this.onchange} required />
                                     <label htmlFor="mpdv">MPDV</label>
                                 </div>
 
                                 <div className="input_div">
-                                    <input type="radio" id="personalizado" name="area" value="personalizado" onChange={this.onchange} />
+                                    <input type="radio" id="personalizado" name="area" value="personalizado"
+                                        onChange={this.onchange} required />
                                     <label htmlFor="personalizado">Personalizados</label>
                                 </div>
                             </div>
@@ -334,7 +361,8 @@ class Rca extends Component {
                                                             name="nome"
                                                             value={this.state.rows[idx].nome}
                                                             onChange={this.handleChangeNome(idx)}
-                                                            className="inputTable">
+                                                            className="inputTable"
+                                                            required>
                                                             <option></option>
                                                             <option>Chaveiro Abridor | Rayco</option>
                                                             <option>Chaveiro Lanterna | Rayco</option>
@@ -347,7 +375,9 @@ class Rca extends Component {
                                                     </td>
                                                     <td>
                                                         <input
+                                                            required
                                                             type='number'
+                                                            onWheel={event => event.currentTarget.blur()}
                                                             name="quantidade"
                                                             value={this.state.rows[idx].quantidade}
                                                             onChange={this.handleChangeQuantidade(idx)}
@@ -404,7 +434,8 @@ class Rca extends Component {
                                                             name="nome"
                                                             value={this.state.rows[idx].nome}
                                                             onChange={this.handleChangeNome(idx)}
-                                                            className="inputTable">
+                                                            className="inputTable"
+                                                            required>
                                                             <option></option>
                                                             <option>8904 – EXPOSITOR MANGUEIRA LUM C/6 SUP KIAN</option>
                                                             <option>8905 – DISPLAY BALCAO SIMPL 6 GANCHOS</option>
@@ -428,7 +459,9 @@ class Rca extends Component {
                                                     </td>
                                                     <td>
                                                         <input
+                                                            required
                                                             type="number"
+                                                            onWheel={event => event.currentTarget.blur()}
                                                             name="quantidade"
                                                             value={this.state.rows[idx].quantidade}
                                                             onChange={this.handleChangeQuantidade(idx)}
@@ -466,6 +499,7 @@ class Rca extends Component {
                                 <div>
                                     <label>*Selecione: </label>
                                     <select
+                                        required
                                         type="text"
                                         name="personalizado"
                                         value={this.state.personalizado}
@@ -479,7 +513,9 @@ class Rca extends Component {
                                 </div>
                                 <div className='descricaoLabel'>
                                     <label>*Descreva seu pedido:</label>
-                                    <textarea className='descricaoBox'
+                                    <textarea
+                                        required
+                                        className='descricaoBox'
                                         type='text'
                                         name="descricao"
                                         autoComplete="off"
@@ -499,11 +535,11 @@ class Rca extends Component {
                                 onChange={e => this.setState({ obsBoolean: e.target.value })}>
                                 <label className="labelInpu">*Deseja fazer alguma observação?</label>
                                 <div className="input_div">
-                                    <input type="radio" id="ObsSim" name="obsBoolean" value="obsSim" onChange={this.onchange} />
+                                    <input required type="radio" id="ObsSim" name="obsBoolean" value="obsSim" onChange={this.onchange} />
                                     <label htmlFor="ObsSim">Sim</label>
                                 </div>
                                 <div className="input_div">
-                                    <input type="radio" id="obsNao" name="obsBoolean" value="obsNao" onChange={this.onchange} />
+                                    <input required type="radio" id="obsNao" name="obsBoolean" value="obsNao" onChange={this.onchange} />
                                     <label htmlFor="obsNao">Não</label>
                                 </div>
                             </div>
@@ -516,6 +552,7 @@ class Rca extends Component {
                                 <div className='descricaoLabel'>
                                     <label>Observação:</label>
                                     <textarea className='descricaoBox'
+                                        required
                                         type='text'
                                         name="obs"
                                         autoComplete="off"
@@ -531,6 +568,8 @@ class Rca extends Component {
                         <input type="submit" value='Enviar Solicitação' />
 
                     </form>
+
+
                 </div>
 
             </div>

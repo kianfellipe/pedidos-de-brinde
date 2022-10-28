@@ -12,179 +12,179 @@ body {
 }
 
 
-    
-    .box {
-        flex-direction: column;
-        color: rgb(248, 248, 248);
-        background-color: rgba(0, 0, 0, 0.6);
-        
-    }
-    
-    .inputDados {
-        background: rgba(44, 44, 44, 0.315);
-        border-radius: 5px;
-        border: 3px solid rgb(129, 0, 0);
-        margin-bottom: 38px;
-        padding: 10px;
-        padding-bottom: 5px;
-        margin-top: 45px;
-        font-size: 13px;
-    }
-    
-    .inputRadioBox {
-        background-color: rgba(129, 0, 0, 0.692);
-        margin-right: 15px;
-        border-radius: 5px;
-        margin-bottom: 45px;
-        margin-top: 35px;
-        display: flex;
-        padding: 15px;
-        margin-left: 10px;
-    }
-    
-    .inputRadioBox2 {
-        margin-right: 25px;
-        background-color: rgba(129, 0, 0, 0.692);
-        margin-left: 18px;
-        border-radius: 5px;
-        margin-bottom: 55px;
-        display: flex;
-        padding: 15px;
-        margin-left: 10px;
-    }
-    
-    .inputUser {
-        display: flex;
-        background: rgba(255, 255, 255, 0.800);
-        border: none;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        outline: none;
-        color: rgb(0, 0, 0);
-        font-size: 15px;
-        width: 100%;
-        margin-right: 10px;
-        letter-spacing: 2px;
-        border-radius: 3px;
-        margin-top: 8px;
-        height: 30px;
-         margin-bottom: 20px;
-    }
-    
-    .inputUser2 {
-        display: flex;
-        background: rgba(255, 255, 255, 0.800);
-        border: none;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        outline: none;
-        color: rgb(0, 0, 0);
-        font-size: 15px;
-        width: 30%;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-        border-radius: 3px;
-        margin-top: 8px;
-        height: 28px;
-    }
-    
-    .inputTable {
-        background: rgba(255, 255, 255, 0.800);
-        letter-spacing: 2px;
-        border: none;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        border-radius: 3px;
-        outline: none;
-        color: rgb(0, 0, 0);
-        font-size: 15px;
-        width: 95%;
-        height: 28px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-    
-    .inputTable2 {
-        background: rgba(255, 255, 255, 0.800);
-        border: none;
-        width: 40px;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        border-radius: 3px;
-        outline: none;
-        color: rgb(0, 0, 0);
-        font-size: 15px;
-        letter-spacing: 2px;
-        height: 25px;
-        float: right;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-    
-    .tdRemoveBtn {
-        width: fit-content;
-        height: fit-content;
-        background: none;
-        border: none;
-    }
-    
-    .tdRemoveBtn img {
-        display: block;
-        width: 28px;
-        margin-bottom: 10px;
-    }
-    
-    .text-center {
-        font-size: 16px;
-        font-weight: 500;
-        text-align: left;
-    }
-    
-    .descricaoContainer{
-        margin-top: 25px;
-        margin-right: 40px;
-        margin-left: 10px;
-    }
-    
-    .inputTable3{
-        background: rgba(255, 255, 255, 0.8);
-        letter-spacing: 2px;
-        border: none;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        border-radius: 3px;
-        outline: none;
-        color: rgb(0, 0, 0);
-        font-size: 15px;
-        max-width: 160px;
-        height: 28px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        margin-left: 5px;
-    }
-    
-    .descricaoLabel{
-        margin-top: 10px;
-    }
 
-    .descricaoBox{
-        display: flex;
-        background: rgba(255, 255, 255, 0.800);
-        border: none;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        outline: none;
-        color: rgb(0, 0, 0);
-        font-size: 15px;
-        width: 100%;
-        margin-right: 10px;
-        letter-spacing: 2px;
-        border-radius: 3px;
-        margin-top: 8px;
-        height: 100px;
-        margin-bottom: 50px;
-    }
-    
+.box {
+    flex-direction: column;
+    color: rgb(248, 248, 248);
+    background-color: rgba(0, 0, 0, 0.6);
+
+}
+
+.inputDados {
+    background: rgba(44, 44, 44, 0.315);
+    border-radius: 5px;
+    border: 3px solid rgb(129, 0, 0);
+    margin-bottom: 38px;
+    padding: 10px;
+    padding-bottom: 5px;
+    margin-top: 45px;
+    font-size: 13px;
+}
+
+.inputRadioBox {
+    background-color: rgba(129, 0, 0, 0.692);
+    margin-right: 15px;
+    border-radius: 5px;
+    margin-bottom: 45px;
+    margin-top: 35px;
+    display: flex;
+    padding: 15px;
+    margin-left: 10px;
+}
+
+.inputRadioBox2 {
+    margin-right: 25px;
+    background-color: rgba(129, 0, 0, 0.692);
+    margin-left: 18px;
+    border-radius: 5px;
+    margin-bottom: 55px;
+    display: flex;
+    padding: 15px;
+    margin-left: 10px;
+}
+
+.inputUser {
+    display: flex;
+    background: rgba(255, 255, 255, 0.800);
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    outline: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    width: 100%;
+    margin-right: 10px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    margin-top: 8px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.inputUser2 {
+    display: flex;
+    background: rgba(255, 255, 255, 0.800);
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    outline: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    width: 30%;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    margin-top: 8px;
+    height: 28px;
+}
+
+.inputTable {
+    background: rgba(255, 255, 255, 0.800);
+    letter-spacing: 2px;
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 3px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    width: 95%;
+    height: 28px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.inputTable2 {
+    background: rgba(255, 255, 255, 0.800);
+    border: none;
+    width: 40px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 3px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    letter-spacing: 2px;
+    height: 25px;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.tdRemoveBtn {
+    width: fit-content;
+    height: fit-content;
+    background: none;
+    border: none;
+}
+
+.tdRemoveBtn img {
+    display: block;
+    width: 28px;
+    margin-bottom: 10px;
+}
+
+.text-center {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.descricaoContainer {
+    margin-top: 25px;
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+.inputTable3 {
+    background: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 3px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    max-width: 160px;
+    height: 28px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.descricaoLabel {
+    margin-top: 10px;
+}
+
+.descricaoBox {
+    display: flex;
+    background: rgba(255, 255, 255, 0.800);
+    border: none;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    outline: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    width: 100%;
+    margin-right: 10px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    margin-top: 8px;
+    height: 100px;
+    margin-bottom: 50px;
+}
+
 
 .input_div {
     font-size: 15px;
@@ -244,7 +244,7 @@ option {
     height: 38px;
     border-radius: 5px;
     margin-right: 30px;
-    
+
     font-size: 17px;
     color: rgb(0, 0, 0);
     padding: 8px;
@@ -272,8 +272,8 @@ input[type="submit" i]:hover {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type="radio" i] {
