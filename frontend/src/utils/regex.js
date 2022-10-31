@@ -3,5 +3,5 @@ export const validEmail = new RegExp(
  );
 
 export const validName = new RegExp(
-   '^[a-zA-Z ]*$'
+   '^[a-zA-Z-áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]*$'
 )

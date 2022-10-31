@@ -3,6 +3,7 @@ import './styles.css'
 import axios from 'axios'
 import removeIcon from './red-x-icon.svg'
 import InputMask from 'react-input-mask'
+import { BASE_URL } from '../../utils/url';
 
 import { validEmail, validName } from '../../utils/regex'
 
@@ -27,6 +28,8 @@ class Rca extends Component {
         emailError: '',
         nameError: ''
     }
+
+
 
     validateEmail = () => {
         const email = this.state.email
@@ -124,7 +127,8 @@ class Rca extends Component {
 
         await axios({
             method: "post",
-            url: "http://localhost:8080/pedido",
+            baseURL: BASE_URL,
+            url: "/pedido",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -200,8 +204,8 @@ class Rca extends Component {
                         {cargo === 'representante' && (
                             <div className="inputBox">
                                 <label htmlFor="codigo" className="labelInput">*Código</label>
-                                <input
-                                    type="number"
+                                <InputMask mask='9999'
+                                    type="text"
                                     name="codigo"
                                     required
                                     className="inputUser2"
@@ -215,8 +219,8 @@ class Rca extends Component {
                         {cargo === 'gerente' && (
                             <div className="inputBox">
                                 <label htmlFor="codigo" className="labelInput">*Código</label>
-                                <input
-                                    type="number"
+                                <InputMask mask="99"
+                                    type="text"
                                     name="codigo"
                                     required
                                     className="inputUser2"
@@ -232,6 +236,7 @@ class Rca extends Component {
                             <input type="text"
                                 name="email"
                                 required
+                                maxLength={45}
                                 className="inputUser"
                                 autoComplete="off"
                                 onChange={e => this.setState({ email: e.target.value })}
@@ -269,13 +274,13 @@ class Rca extends Component {
 
                         <div className="inputBox">
                             <label htmlFor="clientCodigo" className="labelInput">*Código do Cliente</label>
-                            <input type="number"
+                            <InputMask mask="99999"
+                                type='text'
                                 required
                                 onWheel={event => event.currentTarget.blur()}
                                 name="clientCodigo"
                                 className="inputUser2"
                                 autoComplete="off"
-                                maxLength={5}
                                 value={this.state.clientCodigo}
                                 onChange={e => this.setState({ clientCodigo: e.target.value })} />
                         </div>
@@ -297,6 +302,7 @@ class Rca extends Component {
                             <input type="text"
                                 name="razaoSocial"
                                 required
+                                maxLength={144}
                                 className="inputUser"
                                 autoComplete="off"
                                 value={this.state.razaoSocial}
@@ -379,6 +385,7 @@ class Rca extends Component {
                                                             type='number'
                                                             onWheel={event => event.currentTarget.blur()}
                                                             name="quantidade"
+                                                            autoComplete="off"
                                                             value={this.state.rows[idx].quantidade}
                                                             onChange={this.handleChangeQuantidade(idx)}
                                                             className="inputTable2" />
@@ -463,6 +470,7 @@ class Rca extends Component {
                                                             type="number"
                                                             onWheel={event => event.currentTarget.blur()}
                                                             name="quantidade"
+                                                            autoComplete="off"
                                                             value={this.state.rows[idx].quantidade}
                                                             onChange={this.handleChangeQuantidade(idx)}
                                                             className="inputTable2" />
