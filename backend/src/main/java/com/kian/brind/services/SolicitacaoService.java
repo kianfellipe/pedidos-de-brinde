@@ -1,5 +1,6 @@
 package com.kian.brind.services;
 
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -7,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.kian.brind.entities.Solicitacao;
@@ -22,8 +23,8 @@ public class SolicitacaoService {
 	private SolicitacaoRepository repository;
 	
 	@Transactional
-	public Page<SolicitacaoDTO>findAll(PageRequest pageRequest){
-		Page<Solicitacao> list = repository.findAll(pageRequest);
+	public Page<SolicitacaoDTO>findAll(Pageable pageable){
+		Page<Solicitacao> list = repository.findAll(pageable);
 		return list.map(obj -> new SolicitacaoDTO(obj));
 
 	}
