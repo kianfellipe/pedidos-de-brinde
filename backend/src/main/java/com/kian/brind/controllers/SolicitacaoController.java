@@ -21,7 +21,6 @@ import com.kian.brind.services.SolicitacaoService;
 
 @RestController
 @CrossOrigin("https://localhost:3000")
-
 public class SolicitacaoController {
 
 	@Autowired
