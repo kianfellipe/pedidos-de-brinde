@@ -10,7 +10,10 @@ import { validEmail, validName } from '../../utils/regex'
 class Rca extends Component {
 
     state = {
-        rows: [{}],
+        rows: [{
+            nome: '',
+            quantidade: ''
+        }],
         nomeSolicitante: '',
         cargo: '',
         email: '',
@@ -85,7 +88,7 @@ class Rca extends Component {
 
     handleRemoveRow = () => {
         this.setState({
-            rows: this.state.rows.slice(0, -1)
+            rows: this.state.rows.slice(0, -9)
         });
     };
     handleRemoveSpecificRow = (idx) => () => {
@@ -94,12 +97,12 @@ class Rca extends Component {
         this.setState({ rows })
     }
 
-    
+
     handleSubmit = async (event) => {
         event.preventDefault()
-        
+
         let data = new Date()
-        let dataSolicitacao = (data.toLocaleString("en-GB")) 
+        let dataSolicitacao = (data.toLocaleString("en-GB"))
 
         let solicitacao = new Blob([JSON.stringify({
             dataSolicitacao: dataSolicitacao,
@@ -123,21 +126,22 @@ class Rca extends Component {
         let formData = new FormData()
         formData.append('solicitacao', solicitacao)
 
-        await axios({
-            method: "post",
-            url: "https://pedido-brinde-kian.herokuapp.com/pedido",
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
-        })
-            .then(function (response) {
-                console.log(response);
 
+        try {
+            await axios({
+                method: "post",
+                url: "https://pedido-brinde-kian.herokuapp.com/pedido",
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data" },
             })
-            .catch(function (response) {
-                console.log(response);
-            });
-        window.location.reload(false);
-        alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
+            
+            window.location.reload(false);
+            return alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
+            
+        }
+        catch (error) {
+            return alert(error)
+        }
     }
 
     render() {
@@ -152,7 +156,8 @@ class Rca extends Component {
 
                 <div className="box">
 
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}
+                    >
                         <legend className="title">Solicitação de Brinde e MPDV</legend>
 
                         {/*////////////////////Aqui começa a solicitação de dados do solicitante /////////////*/}
@@ -180,7 +185,7 @@ class Rca extends Component {
 
                         <div className="inputRadioBox">
                             <div onChange={e => this.setState({ cargo: e.target.value })}
-                            onClick={e => this.setState({codigo: null})}>
+                                onClick={e => this.setState({ codigo: '' })}>
                                 <label>*Você é:</label>
                                 <div className="input_div">
                                     <input type="radio" id="gerente" name="area" value="gerente"
@@ -316,7 +321,9 @@ class Rca extends Component {
 
                         <div className="inputRadioBox">
                             <div className="radio" value={this.state.solicitar}
-                                onChange={e => this.setState({ solicitar: e.target.value })}>
+                                onChange={e => this.setState({ solicitar: e.target.value })}
+                                onClick={e => this.handleRemoveRow(e)}
+                            >
                                 <label>*Solicitar:</label>
                                 <div className="input_div">
                                     <input type="radio" id="brinde" name="tipo" value="brinde"
@@ -406,7 +413,7 @@ class Rca extends Component {
                                     </table>
 
                                     <button type="button" className="btnAdicionar" onClick={this.handleAddRow} >
-                                        Adicionar mais itens
+                                        Adicionar itens
                                     </button>
 
                                 </div>
@@ -428,7 +435,7 @@ class Rca extends Component {
                                         <thead>
                                             <tr>
                                                 <th className="text-center"> MPDV Solicitado </th>
-                                                <th className="text-center"> Qnt </th>
+                                                <th className="text-center"> Qnt. </th>
                                             </tr>
                                         </thead>
 
@@ -444,6 +451,7 @@ class Rca extends Component {
                                                             onChange={this.handleChangeNome(idx)}
                                                             className="inputTable" required
                                                         >
+
                                                             <option></option>
                                                             <option>8904 – EXPOSITOR MANGUEIRA LUM C/6 SUP KIAN</option>
                                                             <option>8905 – DISPLAY BALCAO SIMPL 6 GANCHOS</option>
@@ -492,7 +500,7 @@ class Rca extends Component {
                                     </table>
 
                                     <button type="button" onClick={this.handleAddRow} className="btnAdicionar">
-                                        Adicionar mais itens
+                                        Adicionar itens
                                     </button>
 
                                 </div>
@@ -578,7 +586,8 @@ class Rca extends Component {
 
                         {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                        <input type="submit" value='Enviar Solicitação' />
+                        <input type="submit" name="myButton" value="Enviar Solicitação" />
+
 
                     </form>
                 </div>

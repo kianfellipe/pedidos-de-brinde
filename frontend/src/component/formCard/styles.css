@@ -253,7 +253,7 @@ option {
 
 
 input[type="submit" i] {
-    background-image: linear-gradient(to right, rgb(0, 102, 235), rgb(47, 0, 255));
+    background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
     width: 100%;
     border: none;
     padding: 15px;
@@ -266,9 +266,6 @@ input[type="submit" i] {
     margin: -16px 0 5px 0;
 }
 
-input[type="submit" i]:hover {
-    background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
-}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
