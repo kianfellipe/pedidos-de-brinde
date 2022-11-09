@@ -102,8 +102,8 @@ class Rca extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        this.setState({botao: true})
-        this.setState({buttonText: "Enviando..."})
+        this.setState({ botao: true })
+        this.setState({ buttonText: "Enviando..." })
 
 
         let data = new Date()
@@ -136,16 +136,17 @@ class Rca extends Component {
         try {
             await axios({
                 method: "post",
-                url: "https://pedido-brinde-kian.herokuapp.com/pedido",
+                url: "https://pedido-rinde-kian.herokuapp.com/pedido",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
             })
             window.location.reload(false);
             return alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
-            
+
         }
-        catch (error) {
-            return alert(error)
+        catch {
+            window.location.reload(false);
+            return alert("Ocorreu algum erro :( \nPor favor entre em contato com o Suporte a Vendas.")
         }
     }
 
@@ -217,6 +218,7 @@ class Rca extends Component {
                                 <label htmlFor="codigo" className="labelInput">*Código</label>
                                 <InputMask mask='9999'
                                     type="text"
+                                    inputMode='numeric'
                                     name="codigo"
                                     required
                                     className="inputUser2"
@@ -232,6 +234,7 @@ class Rca extends Component {
                                 <label htmlFor="codigo" className="labelInput">*Código</label>
                                 <InputMask mask="99"
                                     type="text"
+                                    inputMode='numeric'
                                     name="codigo"
                                     required
                                     className="inputUser2"
@@ -393,15 +396,15 @@ class Rca extends Component {
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input
-
-                                                            type='number'
-                                                            onWheel={event => event.currentTarget.blur()}
+                                                        <InputMask mask='999'
+                                                            type="text"
+                                                            inputMode='numeric'
+                                                            required
                                                             name="quantidade"
                                                             autoComplete="off"
                                                             value={this.state.rows[idx].quantidade}
                                                             onChange={this.handleChangeQuantidade(idx)}
-                                                            className="inputTable2" required />
+                                                            className="inputTable2" />
                                                     </td>
 
                                                     <td>
@@ -479,10 +482,10 @@ class Rca extends Component {
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input
+                                                        <InputMask mask='999'
+                                                            type="text"
+                                                            inputMode='numeric'
                                                             required
-                                                            type="number"
-                                                            onWheel={event => event.currentTarget.blur()}
                                                             name="quantidade"
                                                             autoComplete="off"
                                                             value={this.state.rows[idx].quantidade}
@@ -591,7 +594,7 @@ class Rca extends Component {
 
                         {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                        <input type="submit" name="myButton" value={this.state.buttonText} disabled={this.state.botao}/>
+                        <input type="submit" name="myButton" value={this.state.buttonText} disabled={this.state.botao} />
 
 
                     </form>
