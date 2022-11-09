@@ -28,7 +28,9 @@ class Rca extends Component {
         obsBoolean: '',
         obs: '',
         emailError: '',
-        nameError: ''
+        nameError: '',
+        botao: false,
+        buttonText: 'Enviar Solicitação'
     }
 
     validateEmail = () => {
@@ -100,6 +102,9 @@ class Rca extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
+        this.setState({botao: true})
+        this.setState({buttonText: "Enviando..."})
+
 
         let data = new Date()
         let dataSolicitacao = (data.toLocaleString("en-GB"))
@@ -127,6 +132,7 @@ class Rca extends Component {
         formData.append('solicitacao', solicitacao)
 
 
+        this.state.botao = true
         try {
             await axios({
                 method: "post",
@@ -134,7 +140,6 @@ class Rca extends Component {
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
             })
-            
             window.location.reload(false);
             return alert("Obrigado " + this.state.nomeSolicitante + " ! \nSua solicitação foi enviada com sucesso!");
             
@@ -378,13 +383,13 @@ class Rca extends Component {
                                                             className="inputTable" required
                                                         >
                                                             <option></option>
+                                                            <option>Caixinha de Som</option>
                                                             <option>Chaveiro Abridor | Rayco</option>
                                                             <option>Chaveiro Lanterna | Rayco</option>
+                                                            <option>Catálogo Kian 2021</option>
+                                                            <option>Catálogo Rayco 2020</option>
                                                             <option>Ecobag Vermelha | Kian</option>
                                                             <option>Sacola de Papel Rayco/kian</option>
-                                                            <option>Caixinha de Som</option>
-                                                            <option>Catálogo Rayco 2020</option>
-                                                            <option>Catálogo Kian 2021</option>
                                                         </select>
                                                     </td>
                                                     <td>
@@ -456,21 +461,21 @@ class Rca extends Component {
                                                             <option>8904 – EXPOSITOR MANGUEIRA LUM C/6 SUP KIAN</option>
                                                             <option>8905 – DISPLAY BALCAO SIMPL 6 GANCHOS</option>
                                                             <option>9053 - CESTO EM PLASTIONDAS 0,74X1,0 C/DIVISAO</option>
-                                                            <option>10157 - EXPOSITOR CHAO SIMPL C/20G C/ TEST KIAN</option>
+                                                            <option>9054 - STOPER 0,15 X 0 30 CM</option>
+                                                            <option>9056 - CLIP STRIP 1M EM PVC FLEXIVEL</option>
+                                                            <option>9059 - WOBBLER 10 CM FLEXÍVEL</option>
                                                             <option>10053 - TESTADOR PEQUENO P/ LAMP. E-27 KIAN</option>
+                                                            <option>10157 - EXPOSITOR CHAO SIMPL C/20G C/ TEST KIAN</option>
                                                             <option>10517 - PLASTICO FORRACAO 40CMX25M KIAN</option>
+                                                            <option>10518 - ADESIVO DE CHÃO </option>
                                                             <option>13196 - EXPOSITOR ARAMADO 25G  C/CESTO RAYCO</option>
                                                             <option>13197 - EXPOSITOR SLAT WALL  MDF  25G RAYCO</option>
                                                             <option>13198 - EXPOSITOR DE BROCA RAYCO</option>
                                                             <option>14254 - TESTADOR PEQUENO P/ LAMP C/ 5 BASES</option>
                                                             <option>14255 - PLASTICO FORRACAO 40CMX50M KIAN</option>
-                                                            <option>9056 - CLIP STRIP 1M EM PVC FLEXIVEL</option>
-                                                            <option>9054 - STOPER 0,15 X 0 30 CM</option>
-                                                            <option>9059 - WOBBLER 10 CM FLEXÍVEL</option>
-                                                            <option>10518 - ADESIVO DE CHÃO </option>
-                                                            <option>15305 - EXPOSITOR DE CHÃO PILHAS</option>
-                                                            <option>15304 - EXPOSITOR BACÃO PILHAS</option>
                                                             <option>15303 - CLIP STRIP PILHA</option>
+                                                            <option>15304 - EXPOSITOR BACÃO PILHAS</option>
+                                                            <option>15305 - EXPOSITOR DE CHÃO PILHAS</option>
                                                         </select>
                                                     </td>
                                                     <td>
@@ -523,8 +528,8 @@ class Rca extends Component {
                                         onChange={e => this.setState({ personalizado: e.target.value })}
                                         className="inputTable3">
                                         <option></option>
-                                        <option>Espaço Rayco</option>
                                         <option>Espaço Kian</option>
+                                        <option>Espaço Rayco</option>
                                         <option>Outros</option>
                                     </select>
                                 </div>
@@ -586,7 +591,7 @@ class Rca extends Component {
 
                         {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                        <input type="submit" name="myButton" value="Enviar Solicitação" />
+                        <input type="submit" name="myButton" value={this.state.buttonText} disabled={this.state.botao}/>
 
 
                     </form>
