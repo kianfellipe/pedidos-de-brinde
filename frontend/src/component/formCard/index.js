@@ -136,7 +136,7 @@ class Rca extends Component {
         try {
             await axios({
                 method: 'post',
-                url: 'https://pedido-brinde-kian.herokuapp.com/pedido',
+                url: 'http://localhost:8080/pedido',
                 data: formData,
                 headers: { 'Content-Type': 'multipart/form-data' },
             })
@@ -295,6 +295,7 @@ class Rca extends Component {
                             <label htmlFor='clientCodigo' className='labelInput'>*Código do Cliente</label>
                             <InputMask mask='99999'
                                 type='text'
+                                inputMode='numeric'
                                 required
                                 name='clientCodigo'
                                 className='inputUser2'
@@ -309,6 +310,7 @@ class Rca extends Component {
                             <InputMask mask='99.999.999/9999-99'
                                 type='text'
                                 required
+                                inputMode='numeric'
                                 name='cnpj'
                                 className='inputUser'
                                 autoComplete='off'

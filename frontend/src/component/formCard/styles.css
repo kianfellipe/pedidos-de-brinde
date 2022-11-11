@@ -22,11 +22,15 @@ body {
 
 input:disabled {
     background: rgb(178, 199, 231);
-  }
+}
 
-select:disabled  {
+select:disabled {
     background: rgb(178, 199, 231);
-}  
+}
+
+textarea:disabled {
+    background: rgb(178, 199, 231);
+}
 
 .inputDados {
     background: rgba(44, 44, 44, 0.315);
