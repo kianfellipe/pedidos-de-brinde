@@ -1,14 +1,13 @@
 package com.kian.brind.services;
 
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.kian.brind.entities.Solicitacao;
@@ -21,12 +20,16 @@ public class SolicitacaoService {
 
 	@Autowired
 	private SolicitacaoRepository repository;
-	
-	@Transactional
-	public Page<SolicitacaoDTO>findAll(Pageable pageable){
-		Page<Solicitacao> list = repository.findAll(pageable);
-		return list.map(obj -> new SolicitacaoDTO(obj));
 
+	@Transactional
+	public List<SolicitacaoDTO>findAll(){
+		List<SolicitacaoDTO> listDto = new ArrayList<>();
+		List <Solicitacao> list = repository.findAll();
+		for (Solicitacao obj : list) {
+			SolicitacaoDTO objDto = new SolicitacaoDTO(obj);
+			listDto.add(objDto);
+		}
+		return listDto;
 	}
 
 	@Transactional
@@ -35,7 +38,6 @@ public class SolicitacaoService {
 		Solicitacao entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado"));
 		return new SolicitacaoDTO(entity);
 	}
-	
 
 	@Transactional
 	public SolicitacaoDTO insert(String solicitacao) {
