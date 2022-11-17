@@ -8,29 +8,16 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(46, 46, 46));
-}
-
-
-
-.box {
+    background-image: radial-gradient( rgb(22, 24, 22), rgb(0, 0, 0));
     flex-direction: column;
     color: rgb(248, 248, 248);
-    background-color: rgba(0, 0, 0, 0.6);
-
 }
 
-input:disabled {
+
+input:disabled, select:disabled, textarea:disabled {
     background: rgb(178, 199, 231);
 }
 
-select:disabled {
-    background: rgb(178, 199, 231);
-}
-
-textarea:disabled {
-    background: rgb(178, 199, 231);
-}
 
 .inputDados {
     background: rgba(44, 44, 44, 0.315);
@@ -41,29 +28,22 @@ textarea:disabled {
     padding-bottom: 5px;
     margin-top: 45px;
     font-size: 13px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .inputRadioBox {
-    background-color: rgba(129, 0, 0, 0.692);
-    margin-right: 15px;
+    background-image: radial-gradient( rgba(95, 6, 6, 0.726), rgba(165, 0, 0, 0.541));
     border-radius: 5px;
-    margin-bottom: 45px;
-    margin-top: 35px;
     display: flex;
     padding: 15px;
-    margin-left: 10px;
+    margin-top: 35px;
+    margin-bottom: 45px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
 }
 
-.inputRadioBox2 {
-    margin-right: 25px;
-    background-color: rgba(129, 0, 0, 0.692);
-    margin-left: 18px;
-    border-radius: 5px;
-    margin-bottom: 55px;
-    display: flex;
-    padding: 15px;
-    margin-left: 10px;
-}
 
 .inputUser {
     display: flex;
@@ -77,7 +57,7 @@ textarea:disabled {
     width: 100%;
     margin-right: 10px;
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 4px;
     margin-top: 8px;
     height: 30px;
     margin-bottom: 20px;
@@ -219,10 +199,10 @@ textarea:disabled {
 }
 
 legend {
-    border: 1px solid dodgerblue;
+    border: 1px solid rgb(255, 255, 255);
     padding: 15px 25px;
     text-align: center;
-    background-image: linear-gradient(to right, rgb(0, 151, 238), rgb(99, 175, 219));
+    background-image: linear-gradient(to right, rgb(0, 127, 201), rgb(0, 147, 233));
     border-radius: 5px;
     margin: 15px 0 25px 0 !important;
 }
@@ -249,14 +229,15 @@ option {
 
 
 .btnAdicionar {
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 50px;
-    background-image: linear-gradient(to right, rgb(0, 180, 15), rgba(15, 175, 0, 0.719));
+    background-image: linear-gradient(to right, rgb(6, 167, 0), rgb(15, 185, 0));
     border: none;
     width: auto;
     height: 38px;
     border-radius: 5px;
     margin-right: 30px;
+    margin-left: 12px;
     cursor: pointer;
     font-size: 17px;
     color: rgb(0, 0, 0);
@@ -266,7 +247,7 @@ option {
 
 
 input[type="submit" i] {
-    background-image: linear-gradient(to right, rgb(196, 27, 12), rgb(90, 20, 220));
+    background-image: linear-gradient(to right, rgb(0, 102, 255), rgb(0, 51, 218));
     width: 100%;
     border: none;
     padding: 15px;

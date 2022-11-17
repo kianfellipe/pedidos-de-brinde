@@ -160,7 +160,7 @@ class Rca extends Component {
 
             <div className='cardContainter'>
 
-                <div className='box'>
+                <div className='dark'>
 
                     <form onSubmit={this.handleSubmit}
                     >
@@ -197,19 +197,19 @@ class Rca extends Component {
                                 <label>*Você é:</label>
                                 <div className='input_div'>
                                     <input type='radio' id='gerente' name='area' value='gerente'
-                                        onChange={this.onchange} required disabled={this.state.disableField} />
+                                         required disabled={this.state.disableField} />
                                     <label htmlFor='gerente' >Gerente</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='representante' name='area' value='representante'
-                                        onChange={this.onchange} required disabled={this.state.disableField} />
+                                         required disabled={this.state.disableField} />
                                     <label htmlFor='representante'>Representante</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='outros' name='area' value='interno'
-                                        onChange={this.onchange} required disabled={this.state.disableField} />
+                                         required disabled={this.state.disableField} />
                                     <label htmlFor='outros'>Cliente interno</label>
                                 </div>
                             </div>
@@ -274,7 +274,7 @@ class Rca extends Component {
                             <p>Aqui você deve informar os dados do cliente que receberá os rows solicitados.</p>
                         </div>
 
-                        <div className='inputRadioBox2'>
+                        <div className='inputRadioBox'>
                             <div className='radio' value={this.state.clienteNovo}
                                 onChange={e => this.setState({ clienteNovo: e.target.value })}>
                                 <label htmlFor='nome' className='labelInpu'>*Cliente novo?</label>
@@ -344,21 +344,21 @@ class Rca extends Component {
                                 <label>*Solicitar:</label>
                                 <div className='input_div'>
                                     <input type='radio' id='brinde' name='tipo' value='brinde'
-                                        onChange={this.onchange} required 
+                                         required 
                                         disabled={this.state.disableField}/>
                                     <label htmlFor='brinde'>Brinde</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='mpdv' name='tipo' value='mpdv'
-                                        onChange={this.onchange} required 
+                                         required 
                                         disabled={this.state.disableField}/>
                                     <label htmlFor='mpdv'>MPDV</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='personalizado' name='tipo' value='personalizado'
-                                        onChange={this.onchange} required 
+                                         required 
                                         disabled={this.state.disableField}/>
                                     <label htmlFor='personalizado'>Personalizados</label>
                                 </div>
@@ -573,20 +573,20 @@ class Rca extends Component {
 
                         {/*//////////Aqui começa o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                        <div className='inputRadioBox2'>
+                        <div className='inputRadioBox'>
                             <div className='radio'
                                 value={this.state.obsBoolean}
                                 onChange={e => this.setState({ obsBoolean: e.target.value })}>
                                 <label className='labelInpu'>*Deseja fazer alguma observação?</label>
                                 <div className='input_div'>
                                     <input type='radio' id='ObsSim' name='obsBoolean' value='obsSim'
-                                        onChange={this.onchange} required 
+                                         required 
                                         disabled={this.state.disableField}/>
                                     <label htmlFor='ObsSim'>Sim</label>
                                 </div>
                                 <div className='input_div'>
                                     <input type='radio' id='obsNao' name='obsBoolean' value='obsNao'
-                                        onChange={this.onchange} required 
+                                        required 
                                         disabled={this.state.disableField}/>
                                     <label htmlFor='obsNao'>Não</label>
                                 </div>
@@ -622,6 +622,7 @@ class Rca extends Component {
                 </div>
 
             </div>
+            
 
 
         );
