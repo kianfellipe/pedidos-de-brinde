@@ -197,19 +197,19 @@ class Rca extends Component {
                                 <label>*Você é:</label>
                                 <div className='input_div'>
                                     <input type='radio' id='gerente' name='area' value='gerente'
-                                         required disabled={this.state.disableField} />
+                                        required disabled={this.state.disableField} />
                                     <label htmlFor='gerente' >Gerente</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='representante' name='area' value='representante'
-                                         required disabled={this.state.disableField} />
+                                        required disabled={this.state.disableField} />
                                     <label htmlFor='representante'>Representante</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='outros' name='area' value='interno'
-                                         required disabled={this.state.disableField} />
+                                        required disabled={this.state.disableField} />
                                     <label htmlFor='outros'>Cliente interno</label>
                                 </div>
                             </div>
@@ -279,13 +279,13 @@ class Rca extends Component {
                                 onChange={e => this.setState({ clienteNovo: e.target.value })}>
                                 <label htmlFor='nome' className='labelInpu'>*Cliente novo?</label>
                                 <div className='input_div'>
-                                    <input type='radio' id='sim' name='clienteNovo' value='Sim' required 
-                                    disabled={this.state.disableField}/>
+                                    <input type='radio' id='sim' name='clienteNovo' value='Sim' required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='sim'>Sim</label>
                                 </div>
                                 <div className='input_div'>
-                                    <input type='radio' id='nao' name='clienteNovo' value='Nao' required 
-                                    disabled={this.state.disableField}/>
+                                    <input type='radio' id='nao' name='clienteNovo' value='Nao' required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='nao'>Não</label>
                                 </div>
                             </div>
@@ -344,22 +344,22 @@ class Rca extends Component {
                                 <label>*Solicitar:</label>
                                 <div className='input_div'>
                                     <input type='radio' id='brinde' name='tipo' value='brinde'
-                                         required 
-                                        disabled={this.state.disableField}/>
+                                        required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='brinde'>Brinde</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='mpdv' name='tipo' value='mpdv'
-                                         required 
-                                        disabled={this.state.disableField}/>
+                                        required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='mpdv'>MPDV</label>
                                 </div>
 
                                 <div className='input_div'>
                                     <input type='radio' id='personalizado' name='tipo' value='personalizado'
-                                         required 
-                                        disabled={this.state.disableField}/>
+                                        required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='personalizado'>Personalizados</label>
                                 </div>
                             </div>
@@ -424,6 +424,7 @@ class Rca extends Component {
                                                     <td>
                                                         <button
                                                             className='tdRemoveBtn'
+                                                            disabled={this.state.disableField}
                                                             onClick={this.handleRemoveSpecificRow(idx)}>
                                                             <img src={removeIcon} alt='Remover' />
                                                         </button>
@@ -434,7 +435,9 @@ class Rca extends Component {
                                         </tbody>
                                     </table>
 
-                                    <button type='button' className='btnAdicionar' onClick={this.handleAddRow} >
+                                    <button type='button' className='btnAdicionar'
+                                        disabled={this.state.disableField}
+                                        onClick={this.handleAddRow} >
                                         Adicionar itens
                                     </button>
 
@@ -513,7 +516,8 @@ class Rca extends Component {
                                                         <button
                                                             className='tdRemoveBtn'
                                                             onClick={this.handleRemoveSpecificRow(idx)}>
-                                                            <img src={removeIcon} alt='Remover' />
+                                                            <img src={removeIcon} alt='Remover'
+                                                                disabled={this.state.disableField} />
                                                         </button>
 
 
@@ -523,7 +527,9 @@ class Rca extends Component {
                                         </tbody>
                                     </table>
 
-                                    <button type='button' onClick={this.handleAddRow} className='btnAdicionar'>
+                                    <button type='button' onClick={this.handleAddRow}
+                                        disabled={this.state.disableField}
+                                        className='btnAdicionar'>
                                         Adicionar itens
                                     </button>
 
@@ -580,14 +586,14 @@ class Rca extends Component {
                                 <label className='labelInpu'>*Deseja fazer alguma observação?</label>
                                 <div className='input_div'>
                                     <input type='radio' id='ObsSim' name='obsBoolean' value='obsSim'
-                                         required 
-                                        disabled={this.state.disableField}/>
+                                        required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='ObsSim'>Sim</label>
                                 </div>
                                 <div className='input_div'>
                                     <input type='radio' id='obsNao' name='obsBoolean' value='obsNao'
-                                        required 
-                                        disabled={this.state.disableField}/>
+                                        required
+                                        disabled={this.state.disableField} />
                                     <label htmlFor='obsNao'>Não</label>
                                 </div>
                             </div>
@@ -622,7 +628,7 @@ class Rca extends Component {
                 </div>
 
             </div>
-            
+
 
 
         );
