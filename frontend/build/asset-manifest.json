@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.de40d38e.css",
-    "main.js": "/static/js/main.48bf15df.js",
+    "main.js": "/static/js/main.359de232.js",
     "static/media/logo-kian.svg": "/static/media/logo-kian.33027dce9d2c6fcbb5f223a70dac9f28.svg",
     "static/media/red-x-icon.svg": "/static/media/red-x-icon.a118e9c61a86a45ffb27e884f6769a23.svg",
     "index.html": "/index.html",
     "main.de40d38e.css.map": "/static/css/main.de40d38e.css.map",
-    "main.48bf15df.js.map": "/static/js/main.48bf15df.js.map"
+    "main.359de232.js.map": "/static/js/main.359de232.js.map"
   },
   "entrypoints": [
     "static/css/main.de40d38e.css",
-    "static/js/main.48bf15df.js"
+    "static/js/main.359de232.js"
   ]
 }

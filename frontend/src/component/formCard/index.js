@@ -14,6 +14,8 @@ class Rca extends Component {
             nome: '',
             quantidade: ''
         }],
+        personalizado: '',
+        descricao: '',
         nomeSolicitante: '',
         cargo: '',
         email: '',
@@ -23,8 +25,6 @@ class Rca extends Component {
         cnpj: '',
         razaoSocial: '',
         solicitar: '',
-        personalizado: '',
-        descricao: '',
         obsBoolean: '',
         obs: '',
         emailError: '',
@@ -32,6 +32,7 @@ class Rca extends Component {
         disableField: false,
         buttonText: 'Enviar Solicitação'
     }
+
 
     validateEmail = () => {
         const email = this.state.email
@@ -106,32 +107,54 @@ class Rca extends Component {
         this.setState({ buttonText: 'Enviando...' })
 
 
+        let formData = new FormData()
         let data = new Date()
         let dataSolicitacao = (data.toLocaleString('en-GB'))
 
-        let solicitacao = new Blob([JSON.stringify({
-            dataSolicitacao: dataSolicitacao,
-            nomeSolicitante: this.state.nomeSolicitante,
-            email: this.state.email,
-            cargo: this.state.cargo,
-            codigo: this.state.codigo,
-            clienteNovo: this.state.clienteNovo,
-            clientCodigo: this.state.clientCodigo,
-            cnpj: this.state.cnpj,
-            razaoSocial: this.state.razaoSocial,
-            solicitar: this.state.solicitar,
-            rows: this.state.rows,
-            personalizado: this.state.personalizado,
-            descricao: this.state.descricao,
-            obs: this.state.obs
-        })], {
-            type: 'application/json'
-        })
+        
+        if (this.state.solicitar === 'personalizado') {
+            let solicitacao = new Blob([JSON.stringify({
+                dataSolicitacao: dataSolicitacao,
+                nomeSolicitante: this.state.nomeSolicitante,
+                email: this.state.email,
+                cargo: this.state.cargo,
+                codigo: this.state.codigo,
+                clienteNovo: this.state.clienteNovo,
+                clientCodigo: this.state.clientCodigo,
+                cnpj: this.state.cnpj,
+                razaoSocial: this.state.razaoSocial,
+                solicitar: this.state.solicitar,
+                marca: this.state.personalizado,
+                descricao: this.state.descricao,
 
-        let formData = new FormData()
-        formData.append('solicitacao', solicitacao)
+                obs: this.state.obs
+            })], {
+                type: 'application/json'
+            })
+            formData.append('solicitacao', solicitacao)
+        }
 
-
+        if (this.state.solicitar === 'brinde' || 'mpdv') {
+            let solicitacao = new Blob([JSON.stringify({
+                dataSolicitacao: dataSolicitacao,
+                nomeSolicitante: this.state.nomeSolicitante,
+                email: this.state.email,
+                cargo: this.state.cargo,
+                codigo: this.state.codigo,
+                clienteNovo: this.state.clienteNovo,
+                clientCodigo: this.state.clientCodigo,
+                cnpj: this.state.cnpj,
+                razaoSocial: this.state.razaoSocial,
+                solicitar: this.state.solicitar,
+                produtos: this.state.rows,
+                obs: this.state.obs
+            })], {
+                type: 'application/json'
+            })
+            formData.append('solicitacao', solicitacao)
+        }
+        
+        
         this.state.disableField = true
         try {
             await axios({
@@ -217,7 +240,7 @@ class Rca extends Component {
 
                         {cargo === 'representante' && (
                             <div className='inputBox'>
-                                <label htmlFor='codigo' className='labelInput'>*Código</label>
+                                <label htmlFor='codigo' className='labelInput'>*Código de Representante</label>
                                 <InputMask mask='9999'
                                     type='text'
                                     inputMode='numeric'
@@ -233,7 +256,7 @@ class Rca extends Component {
 
                         {cargo === 'gerente' && (
                             <div className='inputBox'>
-                                <label htmlFor='codigo' className='labelInput'>*Código</label>
+                                <label htmlFor='codigo' className='labelInput'>*Código de Gerente</label>
                                 <InputMask mask='99'
                                     type='text'
                                     inputMode='numeric'
@@ -515,9 +538,9 @@ class Rca extends Component {
                                                     <td>
                                                         <button
                                                             className='tdRemoveBtn'
-                                                            onClick={this.handleRemoveSpecificRow(idx)}>
-                                                            <img src={removeIcon} alt='Remover'
-                                                                disabled={this.state.disableField} />
+                                                            onClick={this.handleRemoveSpecificRow(idx)}
+                                                            disabled={this.state.disableField}>
+                                                            <img src={removeIcon} alt='Remover' />
                                                         </button>
 
 
