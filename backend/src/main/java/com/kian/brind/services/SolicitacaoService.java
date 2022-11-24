@@ -1,14 +1,18 @@
 package com.kian.brind.services;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kian.brind.entities.Solicitacao;
 import com.kian.brind.entities.dto.SolicitacaoDTO;
@@ -21,7 +25,7 @@ public class SolicitacaoService {
 	@Autowired
 	private SolicitacaoRepository repository;
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<SolicitacaoDTO>findAll(){
 		List<SolicitacaoDTO> listDto = new ArrayList<>();
 		List <Solicitacao> list = repository.findAll();
@@ -31,8 +35,20 @@ public class SolicitacaoService {
 		}
 		return listDto;
 	}
+	
+	@Transactional(readOnly = true)
+	public Page<Solicitacao>findByDate(String minDate, String maxDate, Pageable pageable) {
+		
+		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+		
+		LocalDate min = minDate.equals("")? today.minusDays(365) :LocalDate.parse(minDate);
+		LocalDate max = maxDate.equals("")? today : LocalDate.parse(maxDate);
+		
+		return repository.findByDate(min, max, pageable);
+	}
+	
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public SolicitacaoDTO findById(Long id) {
 		Optional<Solicitacao> obj = repository.findById(id);
 		Solicitacao entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado"));

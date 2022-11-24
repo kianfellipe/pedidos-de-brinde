@@ -1,4 +1,4 @@
-import logo from './logo-kian.svg'
+import logo from '../../assets/img/logo-kian.svg'
 import './styles.css'
 import React from 'react'
 

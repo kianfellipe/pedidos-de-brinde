@@ -1,6 +1,7 @@
 package com.kian.brind.entities.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Lob;
 
@@ -15,6 +16,8 @@ public class SolicitacaoDTO implements Serializable {
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
 	private String jsonPedido;
+	
+	private LocalDate date = LocalDate.now();
 
 	public SolicitacaoDTO() {
 	}
@@ -22,11 +25,13 @@ public class SolicitacaoDTO implements Serializable {
 	public SolicitacaoDTO(Solicitacao entity) {
 		id = entity.getId();
 		jsonPedido = entity.getJsonPedido();
+		date = entity.getDate();
 	}
 
-	public SolicitacaoDTO(String jsonPedido) {
+	public SolicitacaoDTO(String jsonPedido, LocalDate date) {
 		super();
 		this.jsonPedido = jsonPedido;
+		this.date = date;
 	}
 
 	public Long getId() {
@@ -43,6 +48,14 @@ public class SolicitacaoDTO implements Serializable {
 
 	public void setJsonPedido(String jsonPedido) {
 		this.jsonPedido = jsonPedido;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
 }

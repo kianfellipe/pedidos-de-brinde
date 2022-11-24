@@ -230,7 +230,7 @@ option {
 
 .btnAdicionar {
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     background-image: linear-gradient(to right, rgb(6, 167, 0), rgb(15, 185, 0));
     border: none;
     width: auto;
