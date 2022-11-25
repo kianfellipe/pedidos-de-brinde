@@ -17,6 +17,7 @@ public class SolicitacaoDTO implements Serializable {
 	@Type(type = "org.hibernate.type.TextType")
 	private String jsonPedido;
 	
+	
 	private LocalDate date = LocalDate.now();
 
 	public SolicitacaoDTO() {

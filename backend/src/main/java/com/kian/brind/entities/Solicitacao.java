@@ -25,7 +25,7 @@ public class Solicitacao implements Serializable {
 	@Type(type = "org.hibernate.type.TextType")
 	private String jsonPedido;
 
-	@Column(name = "data")
+	@Column(name = "data", nullable = false, unique = true)
 	private LocalDate date = LocalDate.now();
 
 	public Solicitacao() {
