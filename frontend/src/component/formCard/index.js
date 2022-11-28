@@ -164,7 +164,7 @@ class Rca extends Component {
         try {
             await axios({
                 method: 'post',
-                url: 'https://pedido-brinde-kian.herokuapp.com/pedido',
+                url: 'http://localhost:8080/pedido',
                 data: formData,
                 headers: { 'Content-Type': 'multipart/form-data' },
             })
