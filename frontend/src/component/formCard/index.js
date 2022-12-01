@@ -11,10 +11,11 @@ import TitleBox from '../formComponents/title'
 import InputCnpj from '../formComponents/inputCnpj'
 import RadioDiv from '../formComponents/radioDiv'
 import RadioBox from '../formComponents/radioBox'
+import Header from '../header'
 
 
 
-class Rca extends Component {
+class FormCard extends Component {
 
     state = {
         rows: [{
@@ -161,8 +162,6 @@ class Rca extends Component {
             formData.append('solicitacao', solicitacao)
         }
 
-
-        this.state.disableField = true
         try {
             await axios({
                 method: 'post',
@@ -189,7 +188,7 @@ class Rca extends Component {
         return (
 
             <div className='cardContainter'>
-
+                <Header/>
                 <div className='dark'>
 
                     <form onSubmit={this.handleSubmit}
@@ -334,10 +333,7 @@ class Rca extends Component {
                                 <h3>Informações do brinde</h3>
                                 <div className='tableContainer'>
 
-                                    <table
-
-                                        id='tab_logic'
-                                    >
+                                    <table id='tab_logic'>
                                         <thead>
                                             <tr>
                                                 <th className='text-center'> Item </th>
@@ -581,7 +577,8 @@ class Rca extends Component {
 
                         {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                        <input type='submit' name='myButton' value={this.state.buttonText} disabled={this.state.disableField} />
+                        <input type='submit' className='btnEnviar' 
+                        name='myButton' value={this.state.buttonText} disabled={this.state.disableField} />
 
 
                     </form>
@@ -595,4 +592,4 @@ class Rca extends Component {
     }
 }
 
-export default Rca;
+export default FormCard;

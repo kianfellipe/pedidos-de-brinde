@@ -1,15 +1,16 @@
 import './App.css';
-import Rca from './component/formCard';
 import React from 'react'
-import Header from './component/header';
+
+import FormCard from './component/formCard';
+
 
 function App() {
   return (
     <>
-      <Header />
+
       <main>
         <div className="App">
-          <Rca />
+          <FormCard />
         </div>
       </main>
     </>
