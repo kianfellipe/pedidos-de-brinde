@@ -330,7 +330,7 @@ class FormCard extends Component {
                         {solicitar === 'brinde' && (
                             <div>
 
-                                <h3>Informações do brinde</h3>
+                                <h3 className='tableTitle'>Informações do brinde</h3>
                                 <div className='tableContainer'>
 
                                     <table id='tab_logic'>
@@ -408,7 +408,7 @@ class FormCard extends Component {
                         {solicitar === 'mpdv' && (
                             <div>
 
-                                <h3>MPDV</h3>
+                                <h3 className='tableTitle'>MPDV</h3>
                                 <div className='tableContainer'>
 
                                     <table

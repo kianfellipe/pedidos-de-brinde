@@ -13,6 +13,14 @@ body {
     background-image: radial-gradient(rgb(255, 255, 255), rgba(0, 0, 0, 0.479));
 }
 
+.tableTitle{
+    margin-left: 15px;
+}
+
+span {
+    margin-left: 10px;
+}
+
 .cardContainter {
     background-image: radial-gradient(rgb(0, 17, 5), rgb(0, 0, 0));
     border-radius: 10px;
@@ -137,6 +145,7 @@ textarea:disabled {
     font-size: 16px;
     font-weight: 500;
     text-align: left;
+    margin-left: 30px;
 }
 
 .descricaoContainer {
@@ -191,6 +200,10 @@ textarea:disabled {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.tableContainer{
+    margin-left: 12px;
 }
 
 
