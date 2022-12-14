@@ -19,7 +19,6 @@ public class WebSecurityConfig{
 		.authorizeHttpRequests()
 	    .antMatchers(HttpMethod.POST, "/pedido").permitAll()
 	    .antMatchers(HttpMethod.GET, "/pedidos").hasAuthority("ADMIN")
-		.anyRequest().authenticated()
 		.and()
 		.csrf().disable();
 		return http.build();

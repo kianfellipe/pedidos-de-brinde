@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './styles.css'
 import logo from '../../assets/img/logo-kian.svg'
-import InputLogin from "../formComponents/inputLogin";
+import InputLogin from "../../component/formComponents/inputLogin";
 
 class Login extends Component {
 

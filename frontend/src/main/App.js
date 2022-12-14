@@ -1,7 +1,9 @@
 import './App.css';
 import React from 'react'
 
-import FormCard from './component/formCard';
+
+import Rotas from './routes';
+import FormCard from '../pages/formCard';
 
 
 function App() {

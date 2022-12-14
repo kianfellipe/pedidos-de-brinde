@@ -5,14 +5,13 @@ import removeIcon from '../../assets/img/red-x-icon.svg'
 import InputMask from 'react-input-mask'
 
 import { validEmail, validName } from '../../utils/regex'
-import InputText from '../formComponents/inputText'
-import InputNum from '../formComponents/inputNum'
-import TitleBox from '../formComponents/title'
-import InputCnpj from '../formComponents/inputCnpj'
-import RadioDiv from '../formComponents/radioDiv'
-import RadioBox from '../formComponents/radioBox'
-import Header from '../header'
-
+import InputText from '../../component/formComponents/inputText'
+import InputNum from '../../component/formComponents/inputNum'
+import TitleBox from '../../component/formComponents/title'
+import InputCnpj from '../../component/formComponents/inputCnpj'
+import RadioDiv from '../../component/formComponents/radioDiv'
+import RadioBox from '../../component/formComponents/radioBox'
+import Header from '../../component/header'
 
 
 class FormCard extends Component {
@@ -113,68 +112,42 @@ class FormCard extends Component {
         event.preventDefault()
         this.setState({ disableField: true })
         this.setState({ buttonText: 'Enviando...' })
-
-
-        let formData = new FormData()
-        let data = new Date()
-        let dataSolicitacao = (data.toLocaleString('en-GB'))
-
-
-        if (this.state.solicitar === 'personalizado') {
-            let solicitacao = new Blob([JSON.stringify({
-                dataSolicitacao: dataSolicitacao,
-                nomeSolicitante: this.state.nomeSolicitante,
-                email: this.state.email,
-                cargo: this.state.cargo,
-                codigo: this.state.codigo,
-                clienteNovo: this.state.clienteNovo,
-                clientCodigo: this.state.clientCodigo,
-                cnpj: this.state.cnpj,
-                razaoSocial: this.state.razaoSocial,
-                solicitar: this.state.solicitar,
-                marca: this.state.personalizado,
-                descricao: this.state.descricao,
-
-                obs: this.state.obs
-            })], {
-                type: 'application/json'
-            })
-            formData.append('solicitacao', solicitacao)
-        }
+        var myJson;
 
         if (this.state.solicitar === 'brinde' || 'mpdv') {
-            let solicitacao = new Blob([JSON.stringify({
-                dataSolicitacao: dataSolicitacao,
-                nomeSolicitante: this.state.nomeSolicitante,
-                email: this.state.email,
-                cargo: this.state.cargo,
-                codigo: this.state.codigo,
-                clienteNovo: this.state.clienteNovo,
-                clientCodigo: this.state.clientCodigo,
-                cnpj: this.state.cnpj,
-                razaoSocial: this.state.razaoSocial,
-                solicitar: this.state.solicitar,
-                produtos: this.state.rows,
-                obs: this.state.obs
-            })], {
-                type: 'application/json'
-            })
-            formData.append('solicitacao', solicitacao)
+            myJson = JSON.stringify(this.state.rows)
         }
+        if (this.state.solicitar === 'pers.'){
+            myJson = this.state.descricao
+        }
+       
+
 
         try {
             await axios({
                 method: 'post',
-                url: 'https://pedido-brinde-mysql.herokuapp.com/pedido',
-                data: formData,
-                headers: { 'Content-Type': 'multipart/form-data' },
+                url: 'http://localhost:8080/pedido',
+                data: {
+                    nomeSolicitante: this.state.nomeSolicitante,
+                    email: this.state.email,
+                    cargo: this.state.cargo,
+                    codigoCargo: this.state.codigo,
+                    clienteNovo: this.state.clienteNovo,
+                    codigoCliente: this.state.clientCodigo,
+                    cnpj: this.state.cnpj,
+                    razaoSocial: this.state.razaoSocial,
+                    tipoSolicitacao: this.state.solicitar + this.state.personalizado,
+                    produtos: myJson,
+                    obs: this.state.obs
+                }
+
             })
-            window.location.reload(false);
+            window.location.reload();
             return alert('Obrigado ' + this.state.nomeSolicitante + ' ! \nSua solicitação foi enviada com sucesso!');
 
         }
         catch {
-            window.location.reload(false);
+            window.location.reload();
             return alert('Ocorreu algum erro :( \nPor favor entre em contato com o Suporte a Vendas.')
         }
     }
@@ -188,7 +161,7 @@ class FormCard extends Component {
         return (
 
             <div className='cardContainter'>
-                <Header/>
+                <Header />
                 <div className='dark'>
 
                     <form onSubmit={this.handleSubmit}
@@ -224,7 +197,7 @@ class FormCard extends Component {
                                 label='Representante' htmlFor='representante' id='representante' name='area' value='representante'
                                 disabled={this.state.disableField} />
                             <RadioDiv
-                                label='Cliente interno' htmlFor='outros' id='outros' name='area' value='outros'
+                                label='Cliente interno' htmlFor='interno' id='interno' name='area' value='interno'
                                 disabled={this.state.disableField} />
                         </RadioBox>
 
@@ -321,7 +294,7 @@ class FormCard extends Component {
                                 label='MPDV' htmlFor='mpdv' id='mpdv' name='tipo' value='mpdv'
                                 disabled={this.state.disableField} />
                             <RadioDiv
-                                label='Personalizados' htmlFor='personalizado' id='personalizado' name='tipo' value='personalizado'
+                                label='Personalizados' htmlFor='pers.' id='pers.' name='tipo' value='pers.'
                                 disabled={this.state.disableField} />
                         </RadioBox>
 
@@ -497,14 +470,14 @@ class FormCard extends Component {
 
                         {/*//////////Aqui começa o CAMPO de dados do PERSONALIZADO///////////////////// */}
 
-                        {solicitar === 'personalizado' && (
+                        {solicitar === 'pers.' && (
                             <div className='descricaoContainer'>
                                 <div>
                                     <label>*Selecione: </label>
                                     <select
 
                                         type='text'
-                                        name='personalizado'
+                                        name='pers.'
                                         value={this.state.personalizado}
                                         disabled={this.state.disableField}
                                         onChange={e => this.setState({ personalizado: e.target.value })}
@@ -577,8 +550,8 @@ class FormCard extends Component {
 
                         {/*//////////Aqui TERMINA o CAMPO de OBSERVAÇÃO///////////////////// */}
 
-                        <input type='submit' className='btnEnviar' 
-                        name='myButton' value={this.state.buttonText} disabled={this.state.disableField} />
+                        <input type='submit' className='btnEnviar'
+                            name='myButton' value={this.state.buttonText} disabled={this.state.disableField} />
 
 
                     </form>

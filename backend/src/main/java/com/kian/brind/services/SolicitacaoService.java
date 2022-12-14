@@ -56,13 +56,12 @@ public class SolicitacaoService {
 	}
 
 	@Transactional
-	public SolicitacaoDTO insert(String solicitacao) {
-		SolicitacaoDTO dto = new SolicitacaoDTO();
+	public SolicitacaoDTO insert(SolicitacaoDTO dto) {
 		Solicitacao entity = new Solicitacao();
-		dto.setJsonPedido(solicitacao);
 		BeanUtils.copyProperties(dto, entity);
-		repository.save(entity);
-		return new SolicitacaoDTO();
+		entity = repository.save(entity);
+		return new SolicitacaoDTO(entity);
 	}
 
+	
 }
