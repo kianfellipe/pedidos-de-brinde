@@ -5,10 +5,13 @@
     font-family: 'Roboto', sans-serif;
 }
 
+span{
+    color:red;
+    font-size: 14px;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    flex-direction: column;
     color: rgb(248, 248, 248);
     background-image: radial-gradient(rgb(255, 255, 255), rgba(0, 0, 0, 0.479));
 }
@@ -19,11 +22,13 @@ body {
 
 span {
     margin-left: 10px;
+    margin: top;
 }
 
 .cardContainter {
     background-image: radial-gradient(rgb(0, 17, 5), rgb(0, 0, 0));
     border-radius: 10px;
+    display: grid;
 }
 
 input:disabled,
@@ -40,7 +45,7 @@ textarea:disabled {
     margin-bottom: 38px;
     padding: 10px;
     padding-bottom: 5px;
-    margin-top: 45px;
+    margin-top: 20px;
     font-size: 13px;
     margin-left: 10px;
     margin-right: 10px;
@@ -51,7 +56,7 @@ textarea:disabled {
     border-radius: 5px;
     display: flex;
     padding: 15px;
-    margin-top: 35px;
+    margin-top: 25px;
     margin-bottom: 45px;
     margin-left: 20px;
     margin-right: 20px;
@@ -73,8 +78,8 @@ textarea:disabled {
     letter-spacing: 2px;
     border-radius: 4px;
     margin-top: 8px;
+    margin-bottom: 4px;
     height: 30px;
-    margin-bottom: 20px;
 }
 
 .inputUser2 {
@@ -88,7 +93,6 @@ textarea:disabled {
     font-size: 15px;
     width: 30%;
     letter-spacing: 2px;
-    margin-bottom: 20px;
     border-radius: 3px;
     margin-top: 8px;
     height: 28px;
@@ -231,6 +235,7 @@ option {
     position: relative;
     margin-left: 10px;
     margin-right: 40px;
+    margin-top: 15px;
 }
 
 
@@ -263,16 +268,17 @@ option {
 
 .btnEnviar {
     background-image: linear-gradient(to right, rgb(0, 102, 255), rgb(0, 51, 218));
-    width: 85%;
+    display: flex;
     border: none;
     padding: 15px;
     color: white;
     font-size: 15px;
+    margin: auto;
     cursor: pointer;
     border-radius: 10px;
-    height: 20% !important;
-    align-items: center;
-    margin: 3px 10px 20px 22px;
+    width: 160px;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 

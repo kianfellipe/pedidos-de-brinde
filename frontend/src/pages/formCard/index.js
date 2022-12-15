@@ -232,9 +232,7 @@ class FormCard extends Component {
                             onBlur={this.validateEmail}
                             disabled={this.state.disableField}
                             onChange={e => this.setState({ email: e.target.value })} />
-                        <span style={{
-                            color: 'red',
-                        }}> {this.state.emailError}</span>
+                        <span> {this.state.emailError}</span>
 
                         {/*//////////Aqui termina a solicitação de dados do solicitante///////////////////// */}
 
